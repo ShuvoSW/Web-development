@@ -1,16 +1,16 @@
 // Array Implementation
-class Stack {
+class Queue {
     constructor() {
         this.items = [];
     }
 
     //* O(1)
-    push(value) {
+    enqueue(value) {
         this.items.push(value);
     }
 
     //* O(1)
-    pop() {
+    dequeue() {
         if(this.isEmpty()) {
             return undefined;
         }
