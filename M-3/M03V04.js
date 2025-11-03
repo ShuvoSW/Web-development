@@ -9,12 +9,12 @@ class Queue {
         this.items.push(value);
     }
 
-    //* O(1)
+    //* O(n)
     dequeue() {
         if(this.isEmpty()) {
             return undefined;
         }
-        return this.items.pop();
+        return this.items.shift();
     }
 
     //* O(1)
@@ -23,7 +23,7 @@ class Queue {
             return undefined;
         }
 
-        return this.items[this.items.length - 1];
+        return this.items[0];
     }
 
     //* O(1)
@@ -31,21 +31,23 @@ class Queue {
         return this.items.length === 0;
     }
 
-
-
     //* O(n)
     print() {
-        console.log(this.items.slice().reverse().join("->"));
+        console.log("Start -> ", this.items.join("->"), "-> end");
     }
 }
 
-const stack = new Stack();
+const queue = new Queue();
 
-stack.push(10);
-stack.push(20);
-stack.push(30);
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+// console.log(queue.peek());
+queue.print();
 
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.pop());
+queue.dequeue();
+// console.log(queue.peek());
+
+queue.print();
+
+
