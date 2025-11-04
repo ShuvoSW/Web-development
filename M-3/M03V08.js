@@ -44,7 +44,35 @@ class LinkedList {
         // this.length++;
     }
 
-    insert() {}
+    insert(index, value) {
+        if(index < 0 || index > this.length) {
+            console.error("Index Out of bound: Shohoj Bangla Bashie Mori Ka");
+            return undefined;
+        }
+        
+        // If the insert is in the start of the linked list
+        if(index === 0) {
+            return this.prepend(value);
+        }
+
+        //  If the insert is in the end of the list
+        if(index == this.length) {
+            return this.append(value);  
+        }
+
+        // If the insert is in the middle
+
+        // Find the leading node
+
+        let count = 0;
+        let leadingNode = this.head;
+
+        while (count !== index -1) {
+            leadingNode = leadingNode.next;
+            count++;
+        }
+        console.log(leadingNode);
+    }
 
     remove() {}
 
@@ -67,8 +95,10 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 
-linkedList.prepend(10);
-linkedList.prepend(20);
-linkedList.prepend(30);
+linkedList.prepend(10); //* 2
+linkedList.prepend(20); //* 1
+linkedList.prepend(30); //* 0
+
+linkedList.insert(2, 100);
 
 linkedList.print();
