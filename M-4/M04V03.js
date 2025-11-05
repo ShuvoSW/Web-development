@@ -59,6 +59,12 @@ class Stack {
 const bracketChecker = (str) => {
     const stack = new Stack();
 
+    const bracketMap = {
+        ")": "(",
+        "}": "{",
+        "]": "["
+    };
+
     for (let i = 0; i < str.length; i++) {
         const char = str[i];
         
@@ -68,10 +74,23 @@ const bracketChecker = (str) => {
             if(stack.isEmpty()) {
                 return false
             }
+
+            const expected = bracketMap[char];
+            const got = stack.pop();
+
+            console.log("Expected: ", expected, "Got: ", got);
+
+            if( got !== bracketMap[char ]) {
+                return false;
+            }
         }
 
     }
-    return true;
+    return stack.isEmpty();
 }
 
 console.log(bracketChecker("([{}])"))
+console.log("----------------------")
+console.log(bracketChecker(")([{}])"))
+console.log("----------------------") 
+console.log(bracketChecker("([{})"))
