@@ -28,30 +28,55 @@ for (let i = 0; i < USER_COUNT; i++) {
 // console.log(usersA);
 // console.log(usersB);
 
-const CommonFriendsSlow = (usersA, usersB) => {
+// const commonFriendsSlow = (usersA, usersB) => {
+
+//     const startTime = performance.now();
+
+//     const commonFriends = [];
+
+//     usersA.forEach(usersA => {
+
+//         usersB.forEach(
+//             usersB => {
+//                 if(usersA.id === usersB.id) {
+//                     commonFriends.push(usersB)
+//                 }
+                    
+//             }
+            
+//         )
+        
+//     });
+
+//     const endTime = performance.now();
+
+//    return {count: commonFriends.length, timeTookFinish: endTime - startTime}
+
+// }
+
+// console.log(commonFriendsSlow(usersA, usersB));
+
+
+const commonFriendsFast = (usersA, usersB) => {
 
     const startTime = performance.now();
 
     const commonFriends = [];
 
-    usersA.forEach(usersA => {
+    const idListA = new Set(usersA.map((user) => user.id));
 
-        usersB.forEach(
-            usersB => {
-                if(usersA.id === usersB.id) {
-                    commonFriends.push(usersB)
-                }
-                    
-            }
-            
-        )
-        
+    usersB.forEach((usersB) => {
+        if (idListA.has(usersB.id)) {
+            commonFriends.push(usersB);
+        }
+
     });
 
     const endTime = performance.now();
 
-   return {count: commonFriends, timeTookFinish: endTime - startTime}
+   return {count: commonFriends.length, timeTookFinish: endTime - startTime}
 
 }
 
-console.log(CommonFriendsSlow(usersA, usersB));
+console.log(commonFriendsFast(usersA, usersB));
+
