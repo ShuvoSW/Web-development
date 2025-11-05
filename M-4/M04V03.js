@@ -54,7 +54,24 @@ class Stack {
     }
 }
 
+// Algorithm
 
-const stack = new Stack();
+const bracketChecker = (str) => {
+    const stack = new Stack();
 
-console.log(stack);
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        
+        if(char === "(" || char === "{" || char === "[") {
+            stack.push(char);
+        }else if (char === ")" || char === "}" || char === "]") {
+            if(stack.isEmpty()) {
+                return false
+            }
+        }
+
+    }
+    return true;
+}
+
+console.log(bracketChecker("([{}])"))
