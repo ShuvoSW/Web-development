@@ -14,17 +14,45 @@
 // "Level" -> true
 // "car" -> false
 
-const palindrome = (str) => {
+
+// const isPalindrome = (str) => {
+//     const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+//     console.log(normalized);
+
+//     const reversed = normalized.split("").reverse().join("");
+//     console.log(reversed);
+
+//     if (reversed === normalized) {
+//         return true;
+//     }
+//     return false;
+// }
+
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
+
+//* Space Complexity = O(n)
+//* Time Complexity = O(n)
+
+const isPalindrome = (str) => {
     const normalized = str.toLowerCase().replace(/[^a-z0-9]/g, "");
-    console.log(normalized);
 
-    const reversed = normalized.split("").reverse().join("");
-    console.log(reversed);
+    let left = 0;
+    let right = normalized.length - 1;
 
-    if (reversed === normalized) {
-        return true;
+    //* Time Complexity = O(m/2)
+    while(left < right) {
+
+        if (normalized[left] !== normalized[right]) {
+           
+            return false; 
+
+        }
+
+        left++;
+        right--;
     }
-    return false;
-}
 
-console.log(palindrome("A man, a plan, a canal: Panama"));
+    return true;
+ }
+
+ console.log(isPalindrome("A man, a plan, a canal: Panama"));
