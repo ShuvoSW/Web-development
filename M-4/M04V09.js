@@ -18,9 +18,11 @@ const selectionSort = (array) => {
         }
 
         if (minIndex !== i) {
-            let temp = array[i];
-            array[i] = array[minIndex];
-            array[minIndex] = temp;
+            // let temp = array[i];
+            // array[i] = array[minIndex];
+            // array[minIndex] = temp;
+
+            [array[i], array[minIndex]] = [array[minIndex], array[i]];
         }
 
         console.log(`After pass ${i + 1}`, array)
