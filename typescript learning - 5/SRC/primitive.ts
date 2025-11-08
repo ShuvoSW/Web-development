@@ -7,11 +7,13 @@ let userName: string = "shuvo123";
 
 let userId = 123
 
-userName.toFixed()
+// userName.toFixed()
 userId.toFixed
 
 let  isAdmin = false //implicit
 isAdmin = true
 
 let  isAdmins = false //explicit
-isAdmins = true
+isAdmins = true;
+
+let  x : undefined = undefined;
