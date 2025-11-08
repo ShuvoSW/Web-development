@@ -17,3 +17,7 @@ let  isAdmins = false //explicit
 isAdmins = true;
 
 let  x : undefined = undefined;
+
+let y = undefined;// any type
+y = 5
+y = "Five"
