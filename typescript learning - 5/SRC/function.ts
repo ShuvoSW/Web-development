@@ -22,3 +22,9 @@ const poorUser = {
 };
 
 poorUser.addBalance(100000)
+
+//call back function => function use in for loop
+
+const arr: number[] = [3, 4, 6];
+
+const sqrArray = arr.map((elem: number): number => elem * elem);
