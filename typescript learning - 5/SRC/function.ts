@@ -1,8 +1,11 @@
 // Function
-// arow function, normal function
+// arrow function, normal function
 
-function add(num1: number, num2: number) : number {
+function addNormal(num1: number, num2: number): number {
     return num1 + num2;
 }
 
-add(2, "2")
+const addArrow = (num1: number, num2: number): 
+number => num1 + num2;
+
+addArrow(2, 2)
