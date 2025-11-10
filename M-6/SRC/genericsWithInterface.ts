@@ -7,7 +7,7 @@ interface Developer<T, X = null> {
         releasedYear: string;
     }
 
-    smartWatch: T:
+    smartWatch: T;
     bike?: X
 }
 
