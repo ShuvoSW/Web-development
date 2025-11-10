@@ -39,7 +39,7 @@ const poorDeveloper: Developer<BrandCharaWatch, {
     }
 }
 
-const richDeveloper: Developer<AppleWatch, > = {
+const richDeveloper: Developer<AppleWatch> = {
     name: "Mr, Rich",
     salary: 100,
     device: {
