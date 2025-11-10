@@ -11,14 +11,16 @@ const rollNumbers: geneticArray<number> = [2, 5, 7];
 // const isEligibleList: boolean[] = [true, false, true];
 const isEligibleList: geneticArray<boolean> = [true, false, true];
 
-const userList: geneticArray<{name: string; age: number}> = [
+type User = {name: string; age: number}
+
+const userList: geneticArray<User> = [
     {
         name: "Mr. X",
         age: 22,
     },
     {
         name: "Mr. X",
-        age: "22",
+        age: 22,
     }
 ]
 
