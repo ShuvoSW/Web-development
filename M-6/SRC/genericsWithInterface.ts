@@ -53,5 +53,5 @@ const richDeveloper: Developer<AppleWatch, > = {
         calculator: true,
         AiFeature: true
     },
-    bike: null
+    bike: null,
 }
