@@ -1,4 +1,4 @@
-class Parent {
+class Person {
       name: string;
     age: number;
     address: string;
@@ -14,15 +14,23 @@ class Parent {
     }
 }
 
-class Student extends Parent { }
+class Student extends Person { 
+    rollNo: number;
 
-const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh");
+    constructor(name: string, age: number, address: string,rollNo: number) {
+        super(name, age, address)
+        this.rollNo = rollNo
+
+    }
+}
+
+const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh", 34);
 
 // student1.getSleep(15);
 
 student1.address
 
-class Teacher extends Parent{
+class Teacher extends Person{
     // name: string;
     // age: number;
     // address: string;
@@ -30,10 +38,11 @@ class Teacher extends Parent{
 
     // constructor(name: string, age: number, address: string,  designation: string) 
 
-    constructor(designation: string) {
+    constructor(name: string, age: number, address: string, designation: string) {
         // this.name = name;
         // this.age = age;
         // this.address = address;
+        super(name, age, address) // Allaways befor super  by this
         this.designation = designation;
     }
 
