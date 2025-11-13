@@ -14,31 +14,30 @@ class Parent {
     }
 }
 
-class Student {
-  
+class Student { }
 
-}
+// const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh");
 
-const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh");
-
-student1.getSleep(15);
+// student1.getSleep(15);
 
 class Teacher {
-    name: string;
-    age: number;
-    address: string;
+    // name: string;
+    // age: number;
+    // address: string;
     designation: string; // extra property
 
-    constructor(name: string, age: number, address: string,  designation: string) {
-        this.name = name;
-        this.age = age;
-        this.address = address;
+    // constructor(name: string, age: number, address: string,  designation: string) 
+
+    constructor(designation: string) {
+        // this.name = name;
+        // this.age = age;
+        // this.address = address;
         this.designation = designation;
     }
 
-    getSleep(numOfHours: number) {
-        console.log(`${this.name} ${numOfHours} ghota ghumai`);
-    }
+    // getSleep(numOfHours: number) {
+    //     console.log(`${this.name} ${numOfHours} ghota ghumai`);
+    // }
 
     takeClass(numOfClass: number) {
         console.log(`${this.name} ${numOfClass} ghonta class nea`)
