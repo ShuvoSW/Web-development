@@ -14,7 +14,7 @@ class Parent {
     }
 }
 
-class Student { }
+class Student extends Parent { }
 
 // const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh");
 
