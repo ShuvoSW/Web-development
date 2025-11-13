@@ -20,9 +20,9 @@ const student1 = new Student(`Mr. Shuvo`, 18, "Bangladesh");
 
 // student1.getSleep(15);
 
-student1.
+student1.address
 
-class Teacher {
+class Teacher extends Parent{
     // name: string;
     // age: number;
     // address: string;
