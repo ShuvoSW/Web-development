@@ -13,15 +13,17 @@ class BankAccount {
         this.userBalance = userBalance;
     }
 
-    protected addBalance(balance: number) {
+    // private addBalance(balance: number) {}
+    // protected addBalance(balance: number) {}
+    addBalance(balance: number) {
         this.userBalance = this.userBalance + balance;
     }
 }
 
-class studentBankAccount extends BankAccount {
-    test() {
-        this.userBalance
-    }
+// class studentBankAccount extends BankAccount {
+//     test() {
+//         this.userBalance
+//     }
 
 const mezbaBhaiAccount = new BankAccount(111, "Mezba", 20);
 
