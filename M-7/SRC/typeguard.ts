@@ -15,3 +15,27 @@ const add = (num1: Alphaneumeric, num2: Alphaneumeric) => {
 }
 
 console.log(add(2, 2));
+
+// in guard
+
+type NormalUser = {
+    name: string;
+}
+
+type AdminUser = {
+    name: string;
+    role: string;
+}
+
+const getUserInfo = (user: NormalUser | AdminUser) => {
+
+    if ("role" in user) {
+
+        console.log(`${user.name} and his rolws is: ${user.role}`);
+    } else {
+        console.log(`${user.name}`);
+    }
+
+}
+
+getUserInfo({name: "Shuvo", role: "Admin"});
