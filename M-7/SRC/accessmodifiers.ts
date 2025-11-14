@@ -5,26 +5,26 @@ class BankAccount {
     public userId: number;
     public userName: string;
     // private userBalance: number;
-    protected userBalance: number;
+    protected _userBalance: number;
 
     constructor(userId: number, userName: string, userBalance: number) {
         this.userId = userId;
         this.userName = userName;
-        this.userBalance = userBalance;
+        this._userBalance = userBalance;
     }
 
     // private addBalance(balance: number) {}
     // protected addBalance(balance: number) {}
     addBalance(balance: number) {
-        this.userBalance = this.userBalance + balance;
+        this._userBalance = this._userBalance + balance;
     }
 }
 
 // class studentBankAccount extends BankAccount {
 //     test() {
-//         this.userBalance
+//         this._userBalance
 //     }
-
+// }
 const mezbaBhaiAccount = new BankAccount(111, "Mezba", 20);
 
 mezbaBhaiAccount.userId = 222;
