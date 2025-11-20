@@ -2,4 +2,6 @@ const a = 10;
 
 // module.exports = a;
 
-console.log(module);
+// console.log(module);
+
+module.exports = {a}
