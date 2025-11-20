@@ -1,3 +1,5 @@
 const a = 10;
 
-module.exports = a;
+// module.exports = a;
+
+console.log(module);
