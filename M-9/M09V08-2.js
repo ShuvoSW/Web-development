@@ -1,7 +1,7 @@
-// const x = require("./M09V08-1");
-// const { a } = require("./M09V08-1");
-const { a: x } = require("./M09V08-1");
+const a = 10;
 
-// console.log(x);
-// console.log(a);
-console.log(x);
+// module.exports = a;
+
+// console.log(module);
+
+module.exports = {a}
