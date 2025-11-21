@@ -1,3 +1,4 @@
+const { error } = require("console");
 const fs = require("fs");
 
 const content1 = " This is a content \n nodejs is awesome!!!";
@@ -8,3 +9,13 @@ try{
 } catch (err) {
     console.err(err.message);
 }
+
+const content2 = "This is a content too, \n asynchronous!!!";
+
+fs.writeFile("./output/test-async.txt", content2, (error) => {
+    if (error) {
+        console.log(error.message)
+    } else {
+        console.log("file written asynchronously");
+    }
+})
