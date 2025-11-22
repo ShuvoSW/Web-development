@@ -42,5 +42,25 @@ function initializeDirectories() {
         })
     }
     console.log("Messy directories files are created!!!");
+
+    if (!fs.existsSync(organizedDir)) {
+      fs.mkdirSync(organizedDir, {recursive: true});
+
+      Object.keys(categories).forEach((category) => {
+        const categoryPath = path.join(organizedDir, category);
+        if (!fs.existsSync(categoryPath)) {
+          fs.mkdirSync(categoryPath)
+        }
+      })
+    }
 }
-initializeDirectories()
+
+function getCategory(filename) {
+  const ext = path.extname(filename).toLowerCase(); // "pdf", "jpg"
+    // images: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg"],
+    for(const [category, extensions] of Object.entries(categories)) {
+      if (extensions.includes(ext)) {
+        return category;
+      }
+    }
+}
