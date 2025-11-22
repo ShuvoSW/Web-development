@@ -41,6 +41,7 @@ function initializeDirectories() {
             fs.writeFileSync(path.join(sourceDir, file), `Content os d ${file}`);
         })
     }
+
     console.log("Messy directories files are created!!!");
 
     if (!fs.existsSync(organizedDir)) {
@@ -63,9 +64,11 @@ function getCategory(filename) {
         return category;
       }
     }
+    return "others";
 }
 
 function organizeFile() {
+   console.log("file organizer \n");
   console.log("source: ", sourceDir);
   console.log("Destination", organizedDir);
   console.log("\n" + "-".repeat(50) + "\n");
@@ -90,10 +93,11 @@ function organizeFile() {
         return;
       }
       const category = getCategory(file)
-      const destDir = path.join(organizeFile, category)
+      const destDir = path.join(organizedDir, category)
       const destPath = path.join(destDir, file)
 
-      fs.copyFileSync(sourcePath, destDir)
+
+      fs.copyFileSync(sourcePath, destPath)
 
       stats.total++;
       stats.byCategory[category] = (stats.byCategory[category] || 0) + 1
@@ -103,3 +107,17 @@ function organizeFile() {
       console.log(`${stat.size}`)
     })
 }
+
+function showHelp() {
+  console.log(`
+    file organizer - usage:
+
+    commands: 
+    init - create files
+    organize - organize files into categories
+    example:
+    node file-organizer init
+    node file-organizer organize
+    `);
+}
+
