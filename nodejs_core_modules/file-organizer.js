@@ -121,3 +121,16 @@ function showHelp() {
     `);
 }
 
+const command = process.argv[2];
+
+switch (command) {
+  case "init":
+    initializeDirectories();    
+    break;
+  case "organize":
+    organizeFile();
+    break;  
+  default:
+    showHelp();
+    break;
+}
