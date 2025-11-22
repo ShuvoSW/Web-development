@@ -64,3 +64,42 @@ function getCategory(filename) {
       }
     }
 }
+
+function organizeFile() {
+  console.log("source: ", sourceDir);
+  console.log("Destination", organizedDir);
+  console.log("\n" + "-".repeat(50) + "\n");
+
+  const files = fs.readdirSync(sourceDir);
+
+  if (files.length === 0) {
+    console.log("No files to work on!!");
+    return;
+  }
+  console.log(`found ${files.length} files to organize \n`);
+
+  const stats = {
+    total: 0,
+    byCategory:{}
+  }
+
+    files.forEach((file) => {
+      const sourcePath = path.join(sourceDir, file);
+      const stat = fs.statSync(sourcePath);
+      if (stat.isDirectory()) {
+        return;
+      }
+      const category = getCategory(file)
+      const destDir = path.join(organizeFile, category)
+      const destPath = path.join(destDir, file)
+
+      fs.copyFileSync(sourcePath, destDir)
+
+      stats.total++;
+      stats.byCategory[category] = (stats.byCategory[category] || 0) + 1
+
+      console.log(`${file}`)
+      console.log(`${category}`)
+      console.log(`${stat.size}`)
+    })
+}
