@@ -28,4 +28,4 @@ fs.writeFile("./output/temp2.txt", "Another temp file", (err) => {
             console.log("Temp2 deleted")
         }
     })
-})
+})  
