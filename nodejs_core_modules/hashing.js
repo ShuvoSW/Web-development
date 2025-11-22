@@ -14,7 +14,7 @@ const sha256Hash = crypto
 console.log("input: password123");
 console.log("SHA256 HasedPassword: ", sha256Hash);
 
-//Password sha256 hash algorithm 
+//Password sha512 hash algorithm 
 const sha512Hash = crypto
 .createHash("sha512")
 .update("password123")
