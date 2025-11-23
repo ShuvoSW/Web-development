@@ -6,7 +6,7 @@ const iv = crypto.randomBytes(16);
 
 function encrypt(text) {
     const cipher = crypto.createCipheriv(algorithm, key, iv);
-    let encrypt = cipher.update(text, "utf-8", "hex");
+    let encrypted = cipher.update(text, "utf-8", "hex");
     encrypted += cipher.final("hex");
     
     return {
@@ -23,3 +23,14 @@ function decrypt(encryptedData, ivHex) {
 }
 
 console.log("Encryption Data : ");
+const sensitiveData = "My credit card: 4242 4242 4242 4242";
+console.log("original data : ", sensitiveData);
+
+const encrypted = encrypt(sensitiveData);
+console.log("Encrypted : ", encrypted);
+
+console.log("Decrypted Data : " );
+const decrypted = decrypt(encrypted.encryptedData, encrypted.iv);
+console.log("Decrypted : ", decrypted);
+console.log("match : ", sensitiveData === decrypted);
+
