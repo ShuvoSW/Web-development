@@ -1,6 +1,7 @@
 import http, { IncomingMessage, Server, ServerResponse } from "http";
 
-const server: Server = http.createServer((req: IncomingMessage, res: ServerResponse)=> {
+const server: Server = http.createServer(
+    (req: IncomingMessage, res: ServerResponse) => {
     console.log("server is sunning...");
 
     if (req.url == "/" && req.method == "GET") {
