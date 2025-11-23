@@ -1,0 +1,5 @@
+// import { configDotenv } from "dotenv"; // shortcut dotenv
+import dotenv from "dotenv";
+import path from "path";
+
+dotenv.config({path:path.join(process.cwd(), ".env")})
