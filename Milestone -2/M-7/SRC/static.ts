@@ -25,5 +25,5 @@ class Counter {
 // console.log(instance3.increment());
 // console.log(instance3.increment());
 
-console.log(Counter.increment());
-console.log(Counter.increment());
+// console.log(Counter.increment());
+// console.log(Counter.increment());
