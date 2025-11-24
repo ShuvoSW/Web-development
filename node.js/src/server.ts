@@ -5,7 +5,7 @@ import "./routes"
 
 const server: Server = http.createServer(
     (req: IncomingMessage, res: ServerResponse) => {
-        console.log("server is sunning...");
+        // console.log("server is sunning...");
 
         const method = req.method?.toUpperCase() || "";
 

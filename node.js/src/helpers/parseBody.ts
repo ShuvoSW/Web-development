@@ -13,6 +13,9 @@ async function parseBody(req: IncomingMessage): Promise<any> {
                 reject(err)
             }
         })
+        req.on("error", reject);
     })
     
 }
+
+export default parseBody;
