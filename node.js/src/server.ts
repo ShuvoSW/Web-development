@@ -45,14 +45,21 @@ const server: Server = http.createServer(
             });
 
             req.on("end", () => {
-                const parseBody = JSON.parse(body);
-                console.log(body);
+                try {
+                    const parseBody = JSON.parse(body);
+                    // console.log(body);
+                    console.log(parseBody);
+                    // res.end(body);
+                    res.end(JSON.stringify(parseBody));
+                } catch (err: any) {
+                    console.log(err.message);
+                }
             })
-            
 
-            res.end(JSON.stringify({
-                message: "processing...",
-            }))
+
+            // res.end(JSON.stringify({
+            //     message: "processing...",
+            // }))
         }
     })
 
