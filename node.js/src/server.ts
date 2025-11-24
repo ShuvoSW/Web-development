@@ -50,6 +50,7 @@ const server: Server = http.createServer(
                     // console.log(body);
                     console.log(parseBody);
                     // res.end(body);
+                    console.log("catching current changes");
                     res.end(JSON.stringify(parseBody));
                 } catch (err: any) {
                     console.log(err.message);
