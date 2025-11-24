@@ -1,13 +1,6 @@
 import http, { IncomingMessage, Server, ServerResponse } from "http";
 import config from "./config";
-import addRoutes, { RouteHandler, routes } from "./helpers/RouteHandler";
-import sendJson from "./helpers/sendJson";
-
-addRoutes("GET", "/", (req, res) => {
- sendJson(res,200, {
-    
- })
-})
+import { RouteHandler, routes } from "./helpers/RouteHandler";
 
 const server: Server = http.createServer(
     (req: IncomingMessage, res: ServerResponse) => {
