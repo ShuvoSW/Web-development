@@ -25,11 +25,10 @@ addRoutes("POST", "/api/users", async(req, res) => {
     const users = readUsers()
 
     const newUser = {
-        id: Date.now(),
         ...body,
     };
 
-    users.Push(newUser);
+    users?.push(newUser);
 
     writeUsers(users);
 
