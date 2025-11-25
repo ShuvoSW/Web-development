@@ -4,7 +4,12 @@ import { RouteHandler, routes } from "./helpers/RouteHandler";
 import "./routes";
 
 function findDynamicRoute(method: string,url: string) {
-    
+    const methodMap = routes.get(method);
+    if(!methodMap) return null;
+
+    for(const [routePath, handler] of methodMap.entries()){
+        
+    }
 }
 
 const server: Server = http.createServer(
