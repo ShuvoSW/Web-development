@@ -33,4 +33,17 @@ addRoutes("POST", "/api/users", async(req, res) => {
     writeUsers(users);
 
     sendJson(res, 201, { success: true, data: body})
+});
+
+addRoutes("PUT", "api/users/:id", async (req, res) => {
+    const {id} = (req as any).params
+    const body = await parseBody(req);
+    
+    const users = readUsers()
+
+    const index = users.findIndex((user: any)=> user.id == id);
+
+    if(index === -1){
+        
+    }
 })
