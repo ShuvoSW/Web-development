@@ -2,7 +2,6 @@ import http, { IncomingMessage, Server, ServerResponse } from "http";
 import config from "./config";
 import { RouteHandler, routes } from "./helpers/RouteHandler";
 import "./routes";
-import { runInContext } from "vm";
 import findDynamicRoute from "./helpers/dynamicRouteHandler";
 
 // function findDynamicRoute(method: string,url: string) {
