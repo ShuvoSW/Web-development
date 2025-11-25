@@ -2,6 +2,7 @@ import http, { IncomingMessage, Server, ServerResponse } from "http";
 import config from "./config";
 import { RouteHandler, routes } from "./helpers/RouteHandler";
 import "./routes";
+import { runInContext } from "vm";
 
 function findDynamicRoute(method: string,url: string) {
     const methodMap = routes.get(method);
@@ -22,10 +23,16 @@ function findDynamicRoute(method: string,url: string) {
                 params[routeParts[i]?.substring(1)!] = urlParts[i];
             } else if(routeParts[i] !== urlParts[i]) {
                 matched = false;
-                
+                break;
             }
         }
+
+        if(matched){
+            return {handler, params};
+        }
     }
+
+    return null;
 }
 
 const server: Server = http.createServer(
@@ -42,7 +49,13 @@ const server: Server = http.createServer(
 
         if (handler) {
             handler(req, res);
-        } else {
+        } 
+        else if(findDynamicRoute(method, path)) {
+            const match = findDynamicRoute(method, path);
+            (req as any).params = match?.params;
+            match?.handler(req, res);
+        }
+        else {
             res.writeHead(404, { "content-type": "application/json" });
             res.end(
                 JSON.stringify({
