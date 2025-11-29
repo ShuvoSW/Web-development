@@ -17,10 +17,18 @@ const initDB = async() => {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100)
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NULL,
+    age INT,
+    phone VARCHAR(15),
+    address TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
     )
     `)
 }
+
+initDB()
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello next level developers')
