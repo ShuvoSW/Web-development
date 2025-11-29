@@ -7,6 +7,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello next level developers')
 })
 
+// parse
+app.use(express.json());
+// app.use(express.urlencoded());
+
 app.post("/", (req: Request, res: Response) => {
     console.log(req.body);
 
