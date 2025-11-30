@@ -161,7 +161,9 @@ app.delete("/users/:id", async (req: Request, res: Response) => {
   // res.send({ message: "API is coll..."})
   try{
     const result = await pool.query(`DELETE FROM users WHERE id = $1`, [req.params.id])
-    if(result.rows.length === 0){
+    // console.log(result);
+    // if(result.rows.length === 0)
+    if(result.rowCount === 0){
       res.status(404).json({
         success: false,
         message: "User not found",
@@ -169,8 +171,8 @@ app.delete("/users/:id", async (req: Request, res: Response) => {
     }else {
       res.status(200).json({
         success: true,
-      message: "User fetched successfully",
-      data: null
+      message: "User deleted successfully",
+      data: result.rows,
       })
     }
     // console.log(result.rows);
