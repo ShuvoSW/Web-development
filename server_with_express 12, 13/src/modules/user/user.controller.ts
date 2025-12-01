@@ -54,7 +54,7 @@ const getSingleUser =  async (req: Request, res: Response) => {
   // console.log(req.params.id);
   // res.send({ message: "API is coll..."})
   try{
-    const result = userServices.getSingleUser(req.params.id)
+    const result = await userServices.getSingleUser(req.params.id as string)
     if(result.rows.length === 0){
       res.status(404).json({
         success: false,
