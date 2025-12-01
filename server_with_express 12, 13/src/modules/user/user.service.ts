@@ -18,5 +18,6 @@ const getSingleUser = async (id) => {
 
 export const userServices = {
     createUser,
-    getUser
+    getUser,
+    getSingleUser
 };

@@ -50,9 +50,36 @@ const getUser = async (req: Request, res: Response) => {
       }
     }
 
+const getSingleUser =  async (req: Request, res: Response) => {
+  // console.log(req.params.id);
+  // res.send({ message: "API is coll..."})
+  try{
+    const result = userServices.getSingleUser(req.params.id)
+    if(result.rows.length === 0){
+      res.status(404).json({
+        success: false,
+        message: "User not found",
+      })
+    }else {
+      res.status(200).json({
+        success: true,
+      message: "User fetched successfully",
+      data: result.rows[0]
+      })
+    }
+    // console.log(result.rows);
+  }catch(err: any) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    })
+  }
+}
+
 
 
 export const userControllers = {
     createUser,
-    getUser
+    getUser,
+    getSingleUser
 };
