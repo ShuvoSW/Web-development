@@ -3,6 +3,7 @@ import { Pool } from "pg"
 import config from "./config";
 import initDB, { pool } from "./config/db";
 import logger from "./middleware/logger";
+import { userRoutes } from "./modules/user/user.routes";
 // const express = require('express')
 
 const app = express()
@@ -23,53 +24,10 @@ app.get('/', logger, (req: Request, res: Response) => {
 })
 
 // users CRUD
-app.post("/users", async (req: Request, res: Response) => {
-  // console.log(req.body);
-  const { name, email } = req.body
-
-  try {
-    const result = await pool.query(`INSERT INTO users(name, email) VALUES($1, $2) RETURNING *`, [name, email]);
-    // console.log(result.rows[0]);
-
-    // res.send({message: "data inserted"})
-
-    res.status(201).json({
-      success: false,
-      message: "Data Inserted Successfully",
-      data: result.rows[0]
-    })
-
-  } catch (err: any) {
-    res.status(500).json({
-      success: false,
-      message: err.message
-    })
-  }
-
-  // res.status(201).json({
-  //   success: true,
-  //   message: "API is working"
-  // })
-})
+app.use("/users", userRoutes)
 
 // users CRUD
-app.get("/users", async (req: Request, res: Response) => {
-  try {
-    const result = await pool.query(`SELECT * FROM users`);
-
-    res.status(200).json({
-      success: true,
-      message: "Users retrieved successfully",
-      data: result.rows,
-    })
-  } catch (err: any) {
-    res.status(500).json({
-      success: false,
-      message: err.message,
-      details: err
-    })
-  }
-})
+// app.get("/users",)
 
 // /users/:id
 app.get("/users/:id", async (req: Request, res: Response) => {
