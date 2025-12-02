@@ -5,6 +5,7 @@ import initDB, { pool } from "./config/db";
 import logger from "./middleware/logger";
 import { userRoutes } from "./modules/user/user.routes";
 import { todoRoutes } from "./modules/todo/todo.routes";
+import { authRoutes } from "./modules/auth/auth.service";
 // const express = require('express')
 
 const app = express()
@@ -27,8 +28,10 @@ app.get('/', logger, (req: Request, res: Response) => {
 // users CRUD
 app.use("/users", userRoutes)
 
+//auth routes
+app.use("/auth", authRoutes);
+
 // users CRUD
-app.use("/todos", todoRoutes)
 // app.get("/users",)
 
 // /users/:id
@@ -41,6 +44,9 @@ app.use("/todos", todoRoutes)
 // app.delete("/users/:id",)
 
 // todos crud
+
+// app.use("/todos", todoRoutes)
+
 // app.post("/todos", async (req: Request, res: Response) => {
 //   const {user_id, title} = req.body;
 
