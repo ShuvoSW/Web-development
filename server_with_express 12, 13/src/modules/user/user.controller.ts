@@ -103,10 +103,38 @@ const updateUser = async (req: Request, res: Response) => {
   }
 }
 
+const deleteUser =  async (req: Request, res: Response) => {
+  // console.log(req.params.id);
+  // res.send({ message: "API is coll..."})
+  try{
+    const result = await userServices.deleteUser(req.params.id!)
+    // console.log(result);
+    // if(result.rows.length === 0)
+    if(result.rowCount === 0){
+      res.status(404).json({
+        success: false,
+        message: "User not found",
+      })
+    }else {
+      res.status(200).json({
+        success: true,
+      message: "User deleted successfully",
+      data: result.rows,
+      })
+    }
+    // console.log(result.rows);
+  }catch(err: any) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    })
+  }
+}
 
 export const userControllers = {
     createUser,
     getUser,
     getSingleUser,
-    updateUser
+    updateUser,
+    deleteUser
 };
