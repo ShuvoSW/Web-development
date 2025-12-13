@@ -59,3 +59,18 @@ values
 
 -- Show inserted data
 select * from person;
+
+-- Multiple dato insert
+insert into
+  person (username, email, age)
+values
+  ('supto', 'supto@gmail.com', 20),
+  ('hridoy', 'hridoy@gmail.com', 34),
+  ('nil', 'nil@gmail.com', 25);
+
+-- Without column name data insert
+
+insert into
+  person
+values
+  (6, 'sup', 'sup@gmail.com', 26);
