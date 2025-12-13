@@ -56,3 +56,6 @@ insert into
   person (id, username, email, age, isActive)
 values
   (1, 'shuvo', 'shuvo@gmail.com', 28, true);
+
+-- Show inserted data
+select * from person;
