@@ -18,3 +18,12 @@ drop table students;
 
 -- Delete exists table
 drop table if exists students;
+
+-- Create table with constraints
+create table students (
+  id serial primary key,
+  username varchar(100) not null,
+  email varchar(100) unique,
+  age smallint check (age >= 18),
+  isActive boolean default true
+)
