@@ -50,3 +50,9 @@ create table person (
   age int check (age >= 20),
   isActive boolean default true
 );
+
+-- Insert data into person table
+insert into
+  person (id, username, email, age, isActive)
+values
+  (1, 'shuvo', 'shuvo@gmail.com', 28, true);
