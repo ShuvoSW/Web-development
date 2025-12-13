@@ -41,3 +41,12 @@ create table students (
   primary key(id),
   unique(username, email) 
 );
+
+-- Person table
+create table person (
+  id serial primary key,
+  username varchar(50) unique,
+  email varchar(50) unique,
+  age int check (age >= 20),
+  isActive boolean default true
+);
