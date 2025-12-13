@@ -13,5 +13,8 @@ create table students (
   dob date
 );
 
--- Delete table
+-- Delate table
 drop table students;
+
+-- Delete exists table
+drop table if exists students;
