@@ -11,4 +11,7 @@ create table students (
   age int,
   isActive boolean,
   dob date
-)
+);
+
+-- Delete table
+drop table students;
