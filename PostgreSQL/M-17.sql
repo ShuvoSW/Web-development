@@ -27,3 +27,6 @@ create table students (
   age smallint check (age >= 18),
   isActive boolean default true
 )
+
+-- Delate database
+drop database students;
