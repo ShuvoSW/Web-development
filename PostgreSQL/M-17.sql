@@ -30,3 +30,14 @@ create table students (
 
 -- Delate database
 drop database students;
+
+-- Multiple Constraints 
+create table students (
+  id serial,
+  username varchar(100) not null,
+  email varchar(100),
+  age smallint check (age >= 18),
+  isActive boolean default true,
+  primary key(id),
+  unique(username, email) 
+);
