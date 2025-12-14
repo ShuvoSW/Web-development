@@ -10,3 +10,9 @@ alter table
   employe
 rename to
   employee
+
+-- Add a column
+alter table
+  employee
+add column
+  email varchar(50);  
