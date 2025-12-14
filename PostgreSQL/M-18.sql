@@ -16,3 +16,9 @@ alter table
   employee
 add column
   email varchar(50);  
+
+-- Drop a column
+alter table
+  employee
+drop column
+  email;
