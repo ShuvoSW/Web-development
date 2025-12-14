@@ -22,3 +22,9 @@ alter table
   employee
 drop column
   email;
+
+-- Rename a column name  
+alter table
+  employee
+rename column
+  name to user_name;
