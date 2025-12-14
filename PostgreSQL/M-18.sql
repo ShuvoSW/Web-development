@@ -5,3 +5,8 @@ create table employe (
   age int
 )
 
+-- Rename table name
+alter table
+  employe
+rename to
+  employee
