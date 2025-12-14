@@ -28,3 +28,11 @@ alter table
   employee
 rename column
   name to user_name;
+
+-- Modifying constraint
+alter table
+  employee
+alter column
+  user_name
+type
+  varchar(50);  
