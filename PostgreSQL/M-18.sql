@@ -65,3 +65,36 @@ alter table employee
 -- Drop constraint (table level constraint)
 alter table employee
   drop constraint unique_employee_email;  
+
+
+-- Crete students table
+CREATE TABLE students (
+  student_id SERIAL PRIMARY KEY,
+  first_name VARCHAR(50) not null,
+  last_name VARCHAR(50) not null,
+  age INT,
+  grade CHAR(2),
+  course VARCHAR(100) unique,
+  email VARCHAR(50) unique,
+  dob DATE,
+  blood_group VARCHAR(5),
+  country VARCHAR(50)
+)
+
+-- Insert data
+INSERT INTO students (first_name, last_name, age, grade, course, email, dob, blood_group, country) values
+  ('Shuvo', 'Majumder', '20', 'A+', 'Computer Science', 'shuvo@gmail.com', '2001-12-10', 'B+', 'Bangladesh');
+
+-- Using select
+select * from students;
+select first_name, age from students;  
+
+--Column Alias
+select first_name as FirstName from students;
+select first_name as "First Name" from students;
+select first_name as "First Name", age as user_age from students;
+
+--Sorting data
+select first_name, blood_group, country, age from students;
+select first_name, blood_group, country, age from students order by age desc;
+select first_name, blood_group, country, age from students order by age asc;
