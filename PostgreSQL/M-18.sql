@@ -36,3 +36,7 @@ alter column
   user_name
 type
   varchar(50);  
+
+-- Add constraint
+alter table employee
+alter column email set not null;  
