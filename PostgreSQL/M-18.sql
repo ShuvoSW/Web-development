@@ -40,3 +40,7 @@ type
 -- Add constraint
 alter table employee
 alter column email set not null;  
+
+-- Drop constraint
+alter table employee
+alter column email drop not null;
