@@ -168,6 +168,26 @@ where country in ('Bangladesh', 'Nepal')
 select * from students
 where course in ('Computer Science', 'Computer Science and engineering')
 
+-- LIKE operator, Searching patterns
+select * from students
+where first_name like 'S%'
+
+select * from students
+where first_name like '%o'
+
+select * from students
+where email like 's%'
+  
+select * from students
+where email like 'S%'
+-- Searching 3 letter
+select * from students
+where first_name like 'S__'
+-- Searching last 1 letter
+select * from students
+where first_name like '%v_'
+
+
 
 
 
