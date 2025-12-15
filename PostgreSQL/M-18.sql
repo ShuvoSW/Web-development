@@ -116,12 +116,20 @@ where grade = 'A+';
 
 -- Select students from the Nepal or Bangladesh
 select * from students
-where country = 'Nepal' or country = 'Bangladesh'
+where country = 'Nepal' or country = 'Bangladesh';
 
 select first_name, country from students
 where country = 'Nepal' or country = 'Bangladesh';
 
+-- Select students with a grade 'A+' or 'B' in Computer Science or Physics
+select first_name, course, grade, country from students
+where (grade = 'A+' or grade = 'B') and (course = 'Computer Science' or course = 'Physics');
 
+select * from students
+where country = 'Nepal' and age = 20
+
+select first_name, age from students
+where (country = 'Bangladesh' or country = 'Nepal') and age = 20;
 
 
 
