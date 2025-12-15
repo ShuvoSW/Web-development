@@ -151,8 +151,11 @@ where country != 'Nepal';
 select first_name, country from students
 where country <> 'Nepal'; -- not equal != or <>
 
+-- Between Operator
 select * from students
 where age between 20 and 22
+
+
 
 
 
