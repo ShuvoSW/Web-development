@@ -194,6 +194,15 @@ where first_name like '%v_'
 select * from students
 where email ilike 'S%'
 
+-- NOT operator
+select * from students
+where not country = 'Nepal';
+  
+select first_name, course, age, dob, country from students
+where not country = 'Bangladesh';
+
+select first_name, course, grade, age, dob, country from students
+where not grade = 'A';
 
 
 
