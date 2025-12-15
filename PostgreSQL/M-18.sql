@@ -213,6 +213,18 @@ select lower(first_name) as first_name_in_upper, first_name, age, country from s
 select concat(first_name, last_name) as "Full Name", first_name, age, country from students;
 
 
+-- Aggregate functions
+select avg(age) as avg_age from students;
+
+select max(age) as max_age from students;
+
+select min(age) as min_age from students;
+
+select sum(age) as sum_of_age from students;
+
+select count(*) from students;
+
+select count(first_name) from students;
 
 
 
