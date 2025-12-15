@@ -194,6 +194,7 @@ where first_name like '%v_'
 select * from students
 where email ilike 'S%'
 
+
 -- NOT operator
 select * from students
 where not country = 'Nepal';
@@ -203,6 +204,15 @@ where not country = 'Bangladesh';
 
 select first_name, course, grade, age, dob, country from students
 where not grade = 'A';
+
+-- Scalar functions
+select upper(first_name) as first_name_in_upper, first_name, age, country from students;
+
+select lower(first_name) as first_name_in_upper, first_name, age, country from students;
+
+select concat(first_name, last_name) as "Full Name", first_name, age, country from students;
+
+
 
 
 
