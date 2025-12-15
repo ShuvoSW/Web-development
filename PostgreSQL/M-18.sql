@@ -155,6 +155,18 @@ where country <> 'Nepal'; -- not equal != or <>
 select * from students
 where age between 20 and 22
 
+-- Distinct operator
+select distinct age from students;
+
+-- Using IN operator
+select * from students
+where country = 'Bangladesh' or country = 'Nepal';
+  
+select * from students
+where country in ('Bangladesh', 'Nepal')
+  
+select * from students
+where course in ('Computer Science', 'Computer Science and engineering')
 
 
 
