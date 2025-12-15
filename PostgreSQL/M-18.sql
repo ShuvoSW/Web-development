@@ -132,6 +132,28 @@ select first_name, age from students
 where (country = 'Bangladesh' or country = 'Nepal') and age = 20;
 
 
+-- Comparison operators
+select * from students
+where age > 19;
+
+select * from students
+where age >= 20;
+
+select * from students
+where age < 21;
+
+select * from students
+where age <= 20;
+
+select * from students
+where country != 'Nepal';
+
+select first_name, country from students
+where country <> 'Nepal'; -- not equal != or <>
+
+select * from students
+where age between 20 and 22
+
 
 
 
