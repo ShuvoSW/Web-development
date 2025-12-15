@@ -174,6 +174,9 @@ where first_name like 'S%'
 
 select * from students
 where first_name like '%o'
+  
+select * from students
+where last_name like '%r'
 
 select * from students
 where email like 's%'
@@ -186,6 +189,10 @@ where first_name like 'S__'
 -- Searching last 1 letter
 select * from students
 where first_name like '%v_'
+
+-- ILIKE operator
+select * from students
+where email ilike 'S%'
 
 
 
