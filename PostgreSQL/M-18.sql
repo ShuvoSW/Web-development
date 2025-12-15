@@ -98,3 +98,46 @@ select first_name as "First Name", age as user_age from students;
 select first_name, blood_group, country, age from students;
 select first_name, blood_group, country, age from students order by age desc;
 select first_name, blood_group, country, age from students order by age asc;
+
+
+-- Distinct
+select distinct country from students;
+
+-- Filtering 
+select * from students
+where country = 'Bangladesh';
+
+select first_name, age, course from students
+where country = 'Bangladesh';
+
+select first_name, age, course, country from students
+where grade = 'A+';
+
+
+-- Select students from the Nepal or Bangladesh
+select * from students
+where country = 'Nepal' or country = 'Bangladesh'
+
+select first_name, country from students
+where country = 'Nepal' or country = 'Bangladesh';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
