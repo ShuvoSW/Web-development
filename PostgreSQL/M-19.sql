@@ -61,3 +61,33 @@ select course, count(*) from students group by coursec having count(*) > 4;
 select country, count(*) avg(age) from students group by country having avg(age) > 21;
 
 select country, avg(age) from students group by country having avg(age) > 21;
+
+
+-- Adding Foreign Key Constraint
+-- Users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(25) NOT NULL
+);
+
+-- Post table
+CREATE TABLE posts (
+  id SERIAL PRIMARY KEY,
+  title TEXT NOT NULL,
+  user_id INT references users(id)
+);
+
+INSERT INTO users (username) VALUES 
+('akash'),
+('batash'),
+('sagor'),
+('nodi');
+
+drop table posts
+
+INSERT INTO posts (title, user_id) VALUES 
+('akash', 2),
+('batash', 1),
+('sagor', 4),
+('nodi', 4);
+
