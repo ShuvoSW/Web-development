@@ -115,3 +115,8 @@ inner join posts as p on p.user_id = u.id;
 -- Left join
 select * from posts as p
 left join users as u on p.user_id = u.id;
+
+
+-- Right join
+select * from posts as p
+right join users as u on p.user_id = u.id;
