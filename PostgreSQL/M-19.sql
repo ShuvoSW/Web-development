@@ -91,3 +91,16 @@ INSERT INTO posts (title, user_id) VALUES
 ('sagor', 4),
 ('nodi', 4);
 
+
+-- Understanding Inner Join
+select title, username from posts
+join users on posts.user_id = users.id;
+
+select * from posts
+join users on posts.user_id = users.id;
+
+select posts.id, title, username from posts
+join users on posts.user_id = users.id;
+
+select p.id, title, username from posts as p
+join users as u on p.user_id = u.id;
