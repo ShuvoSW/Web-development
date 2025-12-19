@@ -40,3 +40,24 @@ select * from students where age > 19 and grade = 'C';
 delete from students where age > 19 and grade = 'C';
   
 delete from students where grade = 'A+';
+
+
+-- GROUP BY Explained
+select country  from students
+ group by country;
+
+-- count students by country
+select country, avg(age)  from students group by country;
+
+-- count students by grade
+select grade, count(*)  from students group by grad
+
+
+-- GROUP BY With HAVING
+-- Course with more than 4 students
+select course, count(*) from students group by coursec having count(*) > 4;
+
+-- Countries where average student age is greater than 21
+select country, count(*) avg(age) from students group by country having avg(age) > 21;
+
+select country, avg(age) from students group by country having avg(age) > 21;
