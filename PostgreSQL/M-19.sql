@@ -32,3 +32,11 @@ update students set email = 'default@gmail.com' where email like 'a%';
 update students set first_name = 'Pronoy', age = 25 where student_id = 1
   
 update students set grade = 'C' where student_id in (1, 3);
+
+
+-- Deleting Data
+select * from students where age > 19 and grade = 'C';
+  
+delete from students where age > 19 and grade = 'C';
+  
+delete from students where grade = 'A+';
