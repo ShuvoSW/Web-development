@@ -104,3 +104,14 @@ join users on posts.user_id = users.id;
 
 select p.id, title, username from posts as p
 join users as u on p.user_id = u.id;
+
+select p.id, title, username from posts as p
+inner join users as u on p.user_id = u.id;
+
+select * from users as u
+inner join posts as p on p.user_id = u.id;
+
+
+-- Left join
+select * from posts as p
+left join users as u on p.user_id = u.id;
