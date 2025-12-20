@@ -70,3 +70,10 @@ from
 select department_name, round(avg(salary)) as avg_salary from employees
 join departments using(department_id)
 group by department_name order by avg_salary desc limit 1 
+
+
+-- Extract date function
+select extract(year from '2025-12-25'::date)
+
+select extract (year from hire_date) as hired_year, count(*) from employees
+group by hired_year
