@@ -77,3 +77,23 @@ select extract(year from '2025-12-25'::date)
 
 select extract (year from hire_date) as hired_year, count(*) from employees
 group by hired_year
+
+
+CREATE TABLE
+  employees (
+    id SERIAL PRIMARY key,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary INT
+  );
+
+INSERT INTO
+  employees (name, department, salary)
+VALUES
+  ('John doe', 'IT', 60000.00),
+  ('John do', 'HR', 70000.00),
+  ('John d', 'IT', 80000.00),
+  ('John ', 'Finance', 60000.00),
+  ('Joh', 'HR', 60000.00);
+  
+select max(salary) from employees
