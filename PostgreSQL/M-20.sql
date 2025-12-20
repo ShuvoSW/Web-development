@@ -51,3 +51,22 @@ select
 from
   employees 
   inner join departments using (department_id);
+
+-- Group by with join
+select
+  department_name, round(avg(salary))
+from
+  employees 
+  inner join departments using (department_id)
+  group by department_name;
+
+  select
+  department_name, count(*)
+from
+  employees 
+  inner join departments using (department_id)
+  group by department_name;
+
+select department_name, round(avg(salary)) as avg_salary from employees
+join departments using(department_id)
+group by department_name order by avg_salary desc limit 1 
