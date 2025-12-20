@@ -166,3 +166,26 @@ $$;
 
 call increase_low_salary('HR');
 
+
+-- Trigger
+create table employee_logs (
+  id serial primary key,
+  emp_id int,
+  action varchar(25),
+  action_time timestamp default now()
+)
+
+create trigger save_employee_delete_logs
+after delete
+on employees
+for each row
+execute function function_name();
+
+create function delete_emp_id(emp_id int)
+returns void
+language  sql
+as 
+$$
+ delete from employees where id = emp_id  
+$$;
+
