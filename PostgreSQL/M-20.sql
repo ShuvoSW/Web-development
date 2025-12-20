@@ -79,6 +79,7 @@ select extract (year from hire_date) as hired_year, count(*) from employees
 group by hired_year
 
 
+-- Subquery Basics
 CREATE TABLE
   employees (
     id SERIAL PRIMARY key,
@@ -96,4 +97,16 @@ VALUES
   ('John ', 'Finance', 60000.00),
   ('Joh', 'HR', 60000.00);
   
-select max(salary) from employees
+select max(salary) from employees;
+
+select * from employees
+where salary = (select max(salary) from employees);
+
+select * from employees
+where salary > (select avg(salary) from employees);
+
+select * from employees
+where salary = (
+  select max(salary) from employees
+  where department = 'HR'
+);
