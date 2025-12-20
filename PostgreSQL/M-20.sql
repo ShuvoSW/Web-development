@@ -202,3 +202,17 @@ $$
 $$;
 
 select delete_emp_id(5);
+
+
+-- Indexing
+
+EXPLAIN ANALYZE
+select * from students where email = 'supto@gmail.com'
+
+create index idx_students_email
+on students(email)
+
+drop index idx_students_email  
+
+EXPLAIN ANALYZE
+select * from students where email = 'sup@gmail.com'
