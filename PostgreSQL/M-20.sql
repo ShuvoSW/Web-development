@@ -132,3 +132,32 @@ $$
 $$;
 
 select delete_emp_id(5);
+
+
+-- Procedures 
+
+create procedure delete_emp_byid (emp_id int)
+language plpgsql
+as 
+$$
+ begin
+  delete from employees where id = emp_id;
+ end; 
+$$;
+
+call delete_emp_byid(4);
+
+create procedure delete_emp_byid (department_name VARCHAR(50))
+language plpgsql
+as 
+$$
+  declare
+  avg_salary int;
+ begin
+  select avg(salary) from employees
+  where department = department_name
+ end; 
+$$;
+
+call delete_emp_byid(4);
+
