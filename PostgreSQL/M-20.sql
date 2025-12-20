@@ -147,17 +147,22 @@ $$;
 
 call delete_emp_byid(4);
 
-create procedure delete_emp_byid (department_name VARCHAR(50))
+create procedure increase_low_salary (department_name VARCHAR(50))
 language plpgsql
 as 
 $$
   declare
   avg_salary int;
  begin
-  select avg(salary) from employees
-  where department = department_name
+  -- first step
+  select avg(salary) into avg_salary from employees
+  where department = department_name;
+
+  -- second step
+  update employees set salary = salary * 1.1
+  where department = department_name and salary < avg_salary;
  end; 
 $$;
 
-call delete_emp_byid(4);
+call increase_low_salary('HR');
 
