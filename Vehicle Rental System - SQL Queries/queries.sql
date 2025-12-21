@@ -84,6 +84,10 @@ values
         'maintenance'
     );
 
+
+CREATE TYPE
+  booking_status AS ENUM('completed', 'confirmed', 'pending');
+
 CREATE TABLE
   booking (
     booking_id SERIAL PRIMARY KEY,
