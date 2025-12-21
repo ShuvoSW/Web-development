@@ -29,6 +29,9 @@ values
 
 CREATE TYPE
   vehicle_type AS ENUM('car', 'bike', 'truck');
+
+CREATE TYPE
+  vehicle_status AS ENUM('available', 'rented', 'maintenance');
   
 CREATE TABLE
   vehicles (
