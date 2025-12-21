@@ -84,17 +84,58 @@ values
         'maintenance'
     );
 
-
-CREATE TYPE
-  booking_status AS ENUM('completed', 'confirmed', 'pending');
+CREATE TYPE booking_status AS ENUM ('completed', 'confirmed', 'pending');
 
 CREATE TABLE
-  booking (
-    booking_id SERIAL PRIMARY KEY,
-    user_id INT references users (user_id),
-    vehicle_id INT references vehicles (vehicle_id),
-    start_date date,
-    end_date date,
-    status booking_status not null,
-    total_cost int not null
-  );
+    booking (
+        booking_id SERIAL PRIMARY KEY,
+        user_id INT references users (user_id),
+        vehicle_id INT references vehicles (vehicle_id),
+        start_date date,
+        end_date date,
+        status booking_status not null,
+        total_cost int not null
+    );
+
+INSERT INTO
+    booking (
+        user_id,
+        vehicle_id,
+        start_date,
+        end_date,
+        status,
+        total_cost
+    )
+values
+    (
+        '1',
+        '2',
+        '2023-10-01',
+        '2023-10-05',
+        'completed',
+        '240'
+    ),
+    (
+        '1',
+        '2',
+        '2023-11-01',
+        '2023-11-03',
+        'completed',
+        '120'
+    ),
+    (
+        '3',
+        '2',
+        '2023-12-01',
+        '2023-12-02',
+        'confirmed',
+        '60'
+    ),
+    (
+        '1',
+        '1',
+        '2023-12-10',
+        '2023-12-12',
+        'pending',
+        '100'
+    );
