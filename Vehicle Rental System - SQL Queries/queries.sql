@@ -4,14 +4,14 @@ CREATE TYPE
 CREATE TABLE
   users (
     user_id SERIAL PRIMARY KEY,
-    user_name VARCHAR(50) not null,
+    name VARCHAR(50) not null,
     email VARCHAR(50) unique not null,
     phone VARCHAR(20) not null,
     role user_role NOT NULL
   );
 
 INSERT INTO
-  users (user_name, email, phone, role)
+  users (name, email, phone, role)
 values
   (
     'Alice',
@@ -25,4 +25,16 @@ values
     'charlie@example.com',
     '1122334455',
     'Customer'
+  );
+
+  CREATE TABLE
+  vehicles (
+    vehicle_id SERIAL PRIMARY KEY,
+    name VARCHAR(50) not null,
+    type
+      vehicle_type not null,
+      model text not null,
+      registration_number text unique not null,
+      rental_price int not null,
+      status vehicle_status not null
   );
