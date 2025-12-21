@@ -27,7 +27,10 @@ values
     'Customer'
   );
 
-  CREATE TABLE
+CREATE TYPE
+  vehicle_type AS ENUM('car', 'bike', 'truck');
+  
+CREATE TABLE
   vehicles (
     vehicle_id SERIAL PRIMARY KEY,
     name VARCHAR(50) not null,
@@ -38,3 +41,4 @@ values
       rental_price int not null,
       status vehicle_status not null
   );
+
