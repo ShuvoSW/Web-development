@@ -1,3 +1,6 @@
+CREATE TYPE
+  user_role AS ENUM('Customer', 'Admin');
+  
 CREATE TABLE
   users (
     user_id SERIAL PRIMARY KEY,
