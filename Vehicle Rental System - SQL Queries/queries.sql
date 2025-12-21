@@ -83,3 +83,14 @@ values
         100,
         'maintenance'
     );
+
+CREATE TABLE
+  booking (
+    booking_id SERIAL PRIMARY KEY,
+    user_id INT references users (user_id),
+    vehicle_id INT references vehicles (vehicle_id),
+    start_date date,
+    end_date date,
+    status booking_status not null,
+    total_cost int not null
+  );
