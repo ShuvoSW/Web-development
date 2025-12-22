@@ -151,3 +151,5 @@ from
   bookings as b
   join users as u on b.user_id = u.user_id
   join vehicles as v on b.user_id = v.vehicle_id;
+
+  select * from vehicles where status != 'rented';
