@@ -139,3 +139,11 @@ values
         'pending',
         '100'
     );
+
+select
+  b.booking_id,
+  u.user_name as customer_name,
+  v.vehicle_name,
+  b.start_date,
+  b.end_date,
+  b.status
