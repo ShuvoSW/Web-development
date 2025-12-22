@@ -153,3 +153,5 @@ from
   join vehicles as v on b.user_id = v.vehicle_id;
 
   select * from vehicles where status != 'rented';
+
+select * from vehicles where type = 'car' and status = 'available'  
