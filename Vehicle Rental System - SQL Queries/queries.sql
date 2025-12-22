@@ -155,3 +155,11 @@ from
   select * from vehicles where status != 'rented';
 
 select * from vehicles where type = 'car' and status = 'available'  
+
+select
+  v.name as vehicle_neme,
+  b.total_cost
+from
+  bookings as b
+  join vehicles as v on b.user_id = v.vehicle_id
+group by vehicle_id
