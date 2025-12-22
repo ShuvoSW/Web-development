@@ -147,3 +147,7 @@ select
   b.start_date,
   b.end_date,
   b.status
+from
+  bookings as b
+  join users as u on b.user_id = u.user_id
+  join vehicles as v on b.user_id = v.vehicle_id;
