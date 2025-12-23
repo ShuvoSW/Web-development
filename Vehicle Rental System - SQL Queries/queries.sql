@@ -1,165 +1,48 @@
-CREATE TYPE user_role AS ENUM ('Customer', 'Admin');
-
-CREATE TABLE
-    users (
-        user_id SERIAL PRIMARY KEY,
-        name VARCHAR(50) not null,
-        email VARCHAR(50) unique not null,
-        phone VARCHAR(20) not null,
-        role user_role NOT NULL
-    );
-
-INSERT INTO
-    users (name, email, phone, role)
-values
-    (
-        'Alice',
-        'alice@example.com',
-        '1234567890',
-        'Customer'
-    ),
-    ('Bob', 'bob@example.com', '0987654321', 'Admin'),
-    (
-        'Charlie',
-        'charlie@example.com',
-        '1122334455',
-        'Customer'
-    );
-
-CREATE TYPE vehicle_type AS ENUM ('car', 'bike', 'truck');
-
-CREATE TYPE vehicle_status AS ENUM ('available', 'rented', 'maintenance');
-
-CREATE TABLE
-    vehicles (
-        vehicle_id SERIAL PRIMARY KEY,
-        name VARCHAR(50) not null,
-        type vehicle_type not null,
-        model text not null,
-        registration_number text unique not null,
-        rental_price int not null,
-        status vehicle_status not null
-    );
-
-INSERT INTO
-    vehicles (
-        name,
-        type,
-        model,
-        registration_number,
-        rental_price,
-        status
-    )
-values
-    (
-        'Toyota Corolla',
-        'car',
-        '2022',
-        'ABC-123',
-        50,
-        'available'
-    ),
-    (
-        'Honda Civic',
-        'car',
-        '2021',
-        'DEF-456',
-        60,
-        'rented'
-    ),
-    (
-        'Yamaha R15',
-        'bike',
-        '2023',
-        'GHI-789',
-        30,
-        'available'
-    ),
-    (
-        'Ford F-150',
-        'truck',
-        '2020',
-        'JKL-012',
-        100,
-        'maintenance'
-    );
-
-CREATE TYPE booking_status AS ENUM ('completed', 'confirmed', 'pending');
-
-CREATE TABLE
-    booking (
-        booking_id SERIAL PRIMARY KEY,
-        user_id INT references users (user_id),
-        vehicle_id INT references vehicles (vehicle_id),
-        start_date date,
-        end_date date,
-        status booking_status not null,
-        total_cost int not null
-    );
-
-INSERT INTO
-    booking (
-        user_id,
-        vehicle_id,
-        start_date,
-        end_date,
-        status,
-        total_cost
-    )
-values
-    (
-        '1',
-        '2',
-        '2023-10-01',
-        '2023-10-05',
-        'completed',
-        '240'
-    ),
-    (
-        '1',
-        '2',
-        '2023-11-01',
-        '2023-11-03',
-        'completed',
-        '120'
-    ),
-    (
-        '3',
-        '2',
-        '2023-12-01',
-        '2023-12-02',
-        'confirmed',
-        '60'
-    ),
-    (
-        '1',
-        '1',
-        '2023-12-10',
-        '2023-12-12',
-        'pending',
-        '100'
-    );
-
+-- Query 1: JOIN
 select
-  b.booking_id,
-  u.user_name as customer_name,
-  v.vehicle_name,
-  b.start_date,
-  b.end_date,
-  b.status
+    b.booking_id,
+    u.user_name as customer_name,
+    v.name,
+    b.start_date,
+    b.end_date,
+    b.status
 from
-  bookings as b
-  join users as u on b.user_id = u.user_id
-  join vehicles as v on b.user_id = v.vehicle_id;
+    bookings as b
+    join users as u on b.user_id = u.user_id
+    join vehicles as v on b.user_id = v.vehicle_id;
 
-  select * from vehicles where status != 'rented';
+-- Query 2: EXISTS
+SELECT
+    *
+FROM
+    vehicles
+WHERE
+    NOT EXISTS (
+        SELECT
+            *
+        FROM
+            bookings
+        WHERE
+            bookings.vehicle_id = vehicles.vehicle_id
+    );
 
-select * from vehicles where type = 'car' and status = 'available'  
-
+-- Query 3: WHERE
 select
-  v.name as vehicle_neme,
-  b.total_cost
+    *
 from
-  bookings as b
-  join vehicles as v on b.user_id = v.vehicle_id
-group by vehicle_id
+    vehicles
+where
+    type = 'car'
+    and status = 'available';
+
+-- Query 4: GROUP BY and HAVING
+SELECT
+    v.name AS vehicle_name,
+    count(*) AS total_bookings
+FROM
+    bookings AS b
+    JOIN vehicles AS v ON b.vehicle_id = v.vehicle_id
+GROUP BY
+    v.name
+HAVING
+    count(*) >= 2;
