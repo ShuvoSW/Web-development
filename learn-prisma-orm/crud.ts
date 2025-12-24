@@ -1,0 +1,35 @@
+import { prisma } from "./lib/prisma"
+
+async function run() {
+    // const createUser = await prisma.user.create({
+    //     data: {
+    //         name: "Joy majumder",
+    //         email: "joy@next.com"
+    //     }
+    // })
+
+    // console.log("Created user: ", createUser);
+
+    // // create post for user id = 1
+    // const createPost = await prisma.post.create({
+    //     data: {
+    //         title: "This is title!",
+    //         content: "This is a big content!",
+    //         authorId: 1
+    //     }
+    // })
+
+    // console.log("Create Post: ", createPost);
+
+    // create profile
+    const createdProfile = await prisma.profile.create({
+        data: {
+            bio: "Web dev",
+            userId: 1
+        }
+    })
+
+    console.log(createdProfile);
+}
+
+run()
