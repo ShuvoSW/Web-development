@@ -64,7 +64,12 @@ async function run() {
         select: {
             id: true,
             bio: true,
-            user: true
+            user: {
+                select: {
+                    name: true,
+                    email: true
+                }
+            }
         }
     })
 
