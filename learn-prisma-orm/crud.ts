@@ -32,7 +32,12 @@ async function run() {
     // console.log(createdProfile);
 
     // retrive all user
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+        include: {
+            posts: true,
+            profile: true
+        }
+    });
     console.log(users);
 
 }
