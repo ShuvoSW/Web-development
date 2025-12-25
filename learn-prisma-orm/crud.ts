@@ -53,27 +53,40 @@ async function run() {
     // console.dir(users, {depth: Infinity});
 
     // update user data
-    const updateUser = await prisma.profile.update({
+    // const updateUser = await prisma.profile.update({
+    //     where: {
+    //         userId: 1
+    //     },
+    //     data: {
+    //         bio: "Web Developer & Mentor",
+    //         dateOfBirht: "2025-12-24T17:21:22.910Z"
+    //     },
+    //     select: {
+    //         id: true,
+    //         bio: true,
+    //         user: {
+    //             select: {
+    //                 name: true,
+    //                 email: true
+    //             }
+    //         }
+    //     }
+    // })
+
+    // console.log("updated user: ", updateUser);
+
+
+    // delete user
+    const deleteUser = await prisma.user.delete({
         where: {
-            userId: 1
-        },
-        data: {
-            bio: "Web Developer & Mentor",
-            dateOfBirht: "2025-12-24T17:21:22.910Z"
-        },
-        select: {
-            id: true,
-            bio: true,
-            user: {
-                select: {
-                    name: true,
-                    email: true
-                }
-            }
+            id: 1
         }
     })
 
-    console.log("updated user: ", updateUser);
+    console.log(deleteUser);
+
+
+
 }
 
 run()
