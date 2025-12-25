@@ -34,7 +34,7 @@ async function run() {
     // console.log(createdProfile);
 
 
-    // retrive all user
+    // read user
     // const users = await prisma.user.findMany({
     //     // include: {
     //     //     posts: true,
@@ -51,6 +51,12 @@ async function run() {
 
     // console.log(users);
     // console.dir(users, {depth: Infinity});
+
+    // read all user
+    const usersAll = await prisma.user.findMany()
+
+    console.log(usersAll);
+
 
     // update user data
     // const updateUser = await prisma.profile.update({
@@ -120,20 +126,23 @@ async function run() {
 
     // upsert update
 
-    const upsertUser = await prisma.user.upsert({
-        where: {
-            email: "shuvo@next.com"
-        },
-        update: {
-            name: "shuvo majumder 2"
-        },
-        create: {
-            name: "shuvo majumder 3",
-            email: "shuvo@next.com"
-        }
-    })
+    // const upsertUser = await prisma.user.upsert({
+    //     where: {
+    //         email: "shuvo@next.com"
+    //     },
+    //     update: {
+    //         name: "shuvo majumder 2"
+    //     },
+    //     create: {
+    //         name: "shuvo majumder 3",
+    //         email: "shuvo@next.com"
+    //     }
+    // })
 
-    console.log(upsertUser);
+    // console.log(upsertUser);
+    
 }
+
+
 
 run()
