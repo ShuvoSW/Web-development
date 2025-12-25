@@ -39,7 +39,7 @@ async function run() {
         }
     });
     console.log(users);
-
+    console.dir(users, {depth: Infinity});
 }
 
 run()
