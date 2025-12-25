@@ -10,6 +10,7 @@ async function run() {
 
     // console.log("Created user: ", createUser);
 
+
     // // create post for user id = 1
     // const createPost = await prisma.post.create({
     //     data: {
@@ -21,6 +22,7 @@ async function run() {
 
     // console.log("Create Post: ", createPost);
 
+
     // create profile
     // const createdProfile = await prisma.profile.create({
     //     data: {
@@ -31,22 +33,42 @@ async function run() {
 
     // console.log(createdProfile);
 
+
     // retrive all user
-    const users = await prisma.user.findMany({
-        // include: {
-        //     posts: true,
-        //     profile: true
-        // },
+    // const users = await prisma.user.findMany({
+    //     // include: {
+    //     //     posts: true,
+    //     //     profile: true
+    //     // },
+    //     select: {
+    //         id: true,
+    //         name: true,
+    //         email: true,
+    //         posts: true,
+    //         profile: true
+    //     }
+    // });
+
+    // console.log(users);
+    // console.dir(users, {depth: Infinity});
+
+    // update user data
+    const updateUser = await prisma.profile.update({
+        where: {
+            userId: 1
+        },
+        data: {
+            bio: "Web Developer & Mentor",
+            dateOfBirht: "2025-12-24T17:21:22.910Z"
+        },
         select: {
             id: true,
-            name: true,
-            email: true,
-            posts: true,
-            profile: true
+            bio: true,
+            user: true
         }
-    });
-    console.log(users);
-    console.dir(users, {depth: Infinity});
+    })
+
+    console.log("updated user: ", updateUser);
 }
 
 run()
