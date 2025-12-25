@@ -100,17 +100,35 @@ async function run() {
 
     // console.log(getUserDataById);
 
-    // upsert
+    // upsert create
+
+    // const upsertUser = await prisma.user.upsert({
+    //     where: {
+    //         email: "shuvo@next.com"
+    //     },
+    //     update: {
+    //         name: "shuvo majumder 2"
+    //     },
+    //     create: {
+    //         name: "shuvo majumder 3",
+    //         email: "shuvo@next.com"
+    //     }
+    // })
+
+    // console.log(upsertUser);
+
+
+    // upsert update
 
     const upsertUser = await prisma.user.upsert({
         where: {
             email: "shuvo@next.com"
         },
         update: {
-            name: "shuvo majumder"
+            name: "shuvo majumder 2"
         },
         create: {
-            name: "shuvo majumder",
+            name: "shuvo majumder 3",
             email: "shuvo@next.com"
         }
     })
