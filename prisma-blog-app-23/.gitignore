@@ -4,4 +4,11 @@ node_modules
 
 /generated/prisma
 .DS_Store
-#hardcoded 
+#hardcoded  
+#Project start
+#pnpm init
+#pnpm add typescript tsx @types/node --save-dev
+
+
+
+
