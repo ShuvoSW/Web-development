@@ -6,11 +6,7 @@ node_modules
 .DS_Store
 #hardcoded  
 
-#Project start
 
-#pnpm init
-#pnpm add typescript tsx @types/node --save-dev
-#npx tsc --init
 
 
 
