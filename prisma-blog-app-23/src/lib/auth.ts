@@ -10,3 +10,16 @@ export const auth = betterAuth({
     enabled: true, 
   }, 
 });
+
+// add packege.json - "dev": "npx tsx watch src/server.ts"
+
+
+
+
+
+
+
+
+
+
+
