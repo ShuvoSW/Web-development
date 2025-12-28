@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use("/posts", postRouter);
 
-app.get("/", (req: Request, res) => {
+app.get("/", (req: Request, res: Response) => {
     res.send("Hello, World!");
 })
 
