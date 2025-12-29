@@ -47,7 +47,3 @@
     "generated/prisma"
   ]
 }
-
-//  "include": [
-//     "src/**/*"
-// , "src/server.ts"  ],
