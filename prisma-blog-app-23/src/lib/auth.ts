@@ -139,10 +139,7 @@ export const auth = betterAuth({
                 throw err;
             }
         },
-    },
-});
-
-// eroor fix
+    
 
 
 
