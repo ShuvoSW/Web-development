@@ -40,10 +40,14 @@
   },
   "include": [
     "src/**/*"
-, "src/server.ts"  ],
+  ],
   "exclude": [
     "node_modules",
     "dist",
-    "generated"
+    "generated/prisma"
   ]
 }
+
+//  "include": [
+//     "src/**/*"
+// , "src/server.ts"  ],
