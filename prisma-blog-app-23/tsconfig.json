@@ -39,7 +39,8 @@
     "esModuleInterop": true,
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/server.ts"
   ],
   "exclude": [
     "node_modules",

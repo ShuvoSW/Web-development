@@ -4,8 +4,9 @@ import { prisma } from "./prisma";
 
 export const auth = betterAuth({
     database: prismaAdapter(prisma, {
-        provider: "sqlite", // or "mysql", "postgresql", ...etc
+        provider: "postgresql", // or "mysql", "postgresql", ...etc
     }),
+    trustedOrigins: [process.env.APP_URL!],
     user: {
         additionalFields: {
             role: {
