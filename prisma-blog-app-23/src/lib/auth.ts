@@ -107,7 +107,7 @@ export const auth = betterAuth({
               </p>
 
               <p style="font-size:14px; word-break:break-all; color:#4f46e5;">
-                ${verificationUrl}
+                ${url}
               </p>
 
               <p style="font-size:14px; color:#666666; line-height:1.6;">
