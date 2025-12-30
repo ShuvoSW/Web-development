@@ -1,11 +1,29 @@
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { postController } from './post.controller';
 import {auth as betterAuth} from '../../lib/auth'
-import { success } from 'better-auth/*';
 
 const router = express.Router();
 
-const auth=(...roles: any)=> {
+export enum UserRole {
+    USER = "USER",
+    ADMIN = "ADMIN"
+}
+
+declare global {
+    namespace Express {
+        interface Request {
+            user?: {
+                id: string;
+                email: string;
+                name: string;
+                role: string;
+                emailVerified: boolean;
+            }
+        }
+    }
+}
+
+const auth=(...roles: UserRole[])=> {
     return async (req: Request,res: Response, next: NextFunction) => {
         // console.log(roles);
         // next()
@@ -28,13 +46,21 @@ const auth=(...roles: any)=> {
             })
         }
 
+        req.user = {
+            id: session.user.id,
+            email: session.user.email,
+            name: session.user.name,
+            role: session.user.role as string,
+            emailVerified: session.user.emailVerified,
+        }
+
         console.log(session);
     }
 }
 
 router.post(
     "/",
-    auth("ADMIN", "USER"),
+    auth(UserRole.USER),
      postController.createPost
 )
 
