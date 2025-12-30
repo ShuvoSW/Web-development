@@ -12,7 +12,7 @@ const createPost = async (req: Request, res: Response) => {
             error: "Unauthorized!",
         })
         }
-        const result = await postService.createPost(req.body, req.id as string)
+        const result = await postService.createPost(req.body, user.id as string)
         res.status(201).json(result)
     } catch (e) {
         res.status(400).json({
