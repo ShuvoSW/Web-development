@@ -6,8 +6,14 @@ const router = express.Router();
 
 const auth=(...roles: any)=> {
     return async (req: Request,res: Response, next: NextFunction) => {
-        console.log(roles);
-        next()
+        // console.log(roles);
+        // next()
+        // get user session
+        const session = await betterAuth.api.getSession({
+            headers: req.headers as any
+        })
+
+        console.log(session);
     }
 }
 
