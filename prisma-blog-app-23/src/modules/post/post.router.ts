@@ -3,6 +3,10 @@ import { postController } from './post.controller';
 
 const router = express.Router();
 
+const auth=()=> {
+
+}
+
 router.post(
     "/",
      postController.createPost
