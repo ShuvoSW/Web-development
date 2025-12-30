@@ -1,18 +1,19 @@
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { postController } from './post.controller';
+import {auth as betterAuth} from '../../lib/auth'
 
 const router = express.Router();
 
-const auth=()=> {
+const auth=(...roles: any)=> {
     return async (req: Request,res: Response, next: NextFunction) => {
-        console.log("middleware!!!!!");
+        console.log(roles);
         next()
     }
 }
 
 router.post(
     "/",
-    auth(),
+    auth("ADMIN", "USER"),
      postController.createPost
 )
 
