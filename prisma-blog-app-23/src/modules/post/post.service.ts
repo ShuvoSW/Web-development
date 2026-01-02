@@ -11,31 +11,44 @@ const createPost = async (data: Omit<Post, "id" | "createdAt" | "updatedAt" | 'a
     return result
 }
 
-const getAllPost = async (payload: { search: string , tags: string[] | []}) => {
-    const allPost = await prisma.post.findMany({
-        where: {
-          AND: [
-             payload.search && { OR: [
+const getAllPost = async ({
+    search,
+    tags
+}: {
+    search: string | undefined,
+    tags: string[] | []
+}) => {
+
+    const andConditions = []
+
+    if(search) {
+        andConditions.push({ OR: [
                 {
                     title: {
-                        contains: payload.search,
+                        contains: search,
                         mode: 'insensitive'
                     }
                 },
                 {
                     content: {
-                        contains: payload.search,
+                        contains: search,
                         mode: 'insensitive'
                     }
                 },
                 {
                     tags: {
-                        has: payload.search 
+                        has: search 
                     }
                 }
-            ]},
+            ]})
+    }
+
+    const allPost = await prisma.post.findMany({
+        where: {
+          AND: [ // AND: [false, tags]
+             
             {tags: {
-                hasEvery: payload.tags as string[]
+                hasEvery: tags as string[]
             }}
           ]
         }
