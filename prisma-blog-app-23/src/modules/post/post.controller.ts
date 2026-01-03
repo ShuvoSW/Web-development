@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { postService } from "./post.service"
 import { PostStatus } from "../../../generated/prisma/enums";
+import paginationSortingHelper from "../../helpers/paginationSortingHelper";
 
 const createPost = async (req: Request, res: Response) => {
     // res.send("Create a new post")
@@ -52,6 +53,8 @@ const getAllPost = async (req: Request, res: Response) => {
 
             const sortBy = req.query.sortBy as string | undefined
             const sortOrder = req.query.sortOrder as string | undefined
+
+            const options = paginationSortingHelper(req.query)
 
         console.log({ isFeatured });
 

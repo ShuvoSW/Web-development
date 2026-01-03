@@ -88,9 +88,9 @@ const getAllPost = async ({
         where: {
           AND: andConditions
         },
-        orderBy: {
-            sortBy: sortOrder
-        }
+        orderBy: sortBy && sortOrder ? {
+            [sortBy]: sortOrder
+        } : {createdAt: "desc"}
     })
     return allPost;
 }
