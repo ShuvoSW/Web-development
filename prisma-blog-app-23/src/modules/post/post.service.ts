@@ -113,14 +113,27 @@ const getAllPost = async ({
     };
 }
 
-const getPostById = async (postId: string) => {
+const getPostById = async (postId: string) => {  
     // console.log("get post by id");
-    const result = await prisma.post.findUnique({
+   return await prisma.$transaction(async (tx) => {
+     await tx.post.update({
+        where: {
+            id: postId
+        },
+        data: {
+            views: {
+                increment: 1
+            }
+        }
+    })
+    const postData = await tx.post.findUnique({
         where: {
             id: postId
         }
     })
-    return result
+    return postData
+   })
+ 
 }
 
 export const postService = {
