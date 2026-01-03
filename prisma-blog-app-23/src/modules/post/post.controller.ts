@@ -79,7 +79,7 @@ const getPostById = async (req: Request, res: Response) => {
         if(!postId) {
             throw new Error("Post Id is required")
         }
-        const result = await postService.getPostById();
+        const result = await postService.getPostById(postId);
         res.status(200).json(result)
     } catch (e) {
         res.status(400).json({
