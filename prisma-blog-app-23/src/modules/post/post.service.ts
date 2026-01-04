@@ -21,7 +21,7 @@ const getAllPost = async ({
     page,
     limit,
     skip,
-    sortBy, 
+    sortBy,
     sortOrder
 }: {
     search: string | undefined,
@@ -32,14 +32,15 @@ const getAllPost = async ({
     page: number,
     limit: number,
     skip: number,
-    sortBy: string ,
-    sortOrder: string 
+    sortBy: string,
+    sortOrder: string
 }) => {
 
-    const andConditions:PostWhereInput[] = []
+    const andConditions: PostWhereInput[] = []
 
-    if(search) {
-        andConditions.push({ OR: [
+    if (search) {
+        andConditions.push({
+            OR: [
                 {
                     title: {
                         contains: search,
@@ -54,29 +55,32 @@ const getAllPost = async ({
                 },
                 {
                     tags: {
-                        has: search 
+                        has: search
                     }
                 }
-            ]})
+            ]
+        })
     }
 
-    if(tags.length > 0) {
-        andConditions.push( {tags: {
+    if (tags.length > 0) {
+        andConditions.push({
+            tags: {
                 hasEvery: tags as string[]
-            }})
+            }
+        })
     }
 
-    if(typeof isFeatured == 'boolean') {
+    if (typeof isFeatured == 'boolean') {
         andConditions.push({
             isFeatured
         })
     }
 
-    if(status) {
-        andConditions.push({status})
+    if (status) {
+        andConditions.push({ status })
     }
 
-    if(authorId) {
+    if (authorId) {
         andConditions.push({
             authorId
         })
@@ -86,19 +90,24 @@ const getAllPost = async ({
         take: limit,
         skip,
         where: {
-          AND: andConditions
+            AND: andConditions
         },
         // orderBy: sortBy && sortOrder ? {
         //     [sortBy]: sortOrder
         // } : {createdAt: "desc"}
         orderBy: {
             [sortBy]: sortOrder
+        },
+        include: {
+            _count: {
+                select: { comments: true }
+            }
         }
     });
 
     const total = await prisma.post.count({
-         where: {
-          AND: andConditions
+        where: {
+            AND: andConditions
         },
     })
 
@@ -108,54 +117,60 @@ const getAllPost = async ({
             total,
             page,
             limit,
-            totalPages: Math.ceil(total/limit)
+            totalPages: Math.ceil(total / limit)
         }
     };
 }
 
-const getPostById = async (postId: string) => {  
+const getPostById = async (postId: string) => {
     // console.log("get post by id");
-   return await prisma.$transaction(async (tx) => {
-     await tx.post.update({
-        where: {
-            id: postId
-        },
-        data: {
-            views: {
-                increment: 1
+    return await prisma.$transaction(async (tx) => {
+        await tx.post.update({
+            where: {
+                id: postId
+            },
+            data: {
+                views: {
+                    increment: 1
+                }
             }
-        }
-    })
-    const postData = await tx.post.findUnique({
-        where: {
-            id: postId
-        },
-        include: {
-            comments: {
-                where: {
-                    parentId: null,
-                    status: CommentStatus.APPROVED
-                },
-                include: {
-                    replies: {
-                        where: {
-                            status: CommentStatus.APPROVED
-                        },
-                        include: {
-                            replies: {
-                                where: {
-                                    status: CommentStatus.APPROVED
+        })
+        const postData = await tx.post.findUnique({
+            where: {
+                id: postId
+            },
+            include: {
+                comments: {
+                    where: {
+                        parentId: null,
+                        status: CommentStatus.APPROVED
+                    },
+                    orderBy: { createdAt: "desc" },
+                    include: {
+                        replies: {
+                            where: {
+                                status: CommentStatus.APPROVED
+                            },
+                            orderBy: { createdAt: "asc" },
+                            include: {
+                                replies: {
+                                    where: {
+                                        status: CommentStatus.APPROVED
+                                    },
+                                    orderBy: { createdAt: "asc" }
                                 }
                             }
                         }
                     }
+                },
+                _count: {
+                    select: { comments: true }
                 }
             }
-        }
+        })
+        return postData
     })
-    return postData
-   })
- 
+
 }
 
 export const postService = {
