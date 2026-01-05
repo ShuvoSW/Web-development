@@ -2,7 +2,7 @@ import { Router } from "express";
 import { userController } from "./user.controller";
 
 
-const userRouter = Router();
+const userRouter: Router = Router();
 
 userRouter.post("/register", userController.register);
 

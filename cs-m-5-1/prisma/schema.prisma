@@ -43,7 +43,8 @@ model Equipment {
   name         String
   serialNumber String          @unique
   status       EquipmentStatus @default(AVAILABLE)
-  location     Json?
+  location     String
+  metadata     Json?
 
   // one-to-many
   usageLogs UsageLog[]

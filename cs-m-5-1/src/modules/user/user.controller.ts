@@ -11,6 +11,6 @@ const register: RequestHandler = async (req, res) => {
     res.send({message: "Registered Successfully", data: user})
 }
 
-export const userController  = {
+export const userController: { register: RequestHandler } = {
     register
 }
