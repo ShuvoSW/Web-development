@@ -62,8 +62,37 @@ return await prisma.comment.findMany({
 })
 }
 
+// 1. nijar comment delete korta parba
+// login takte hobe
+// tar nijar comment kina ata check korta hobe
+const deleteComment = async(commentId: string, authorId: string) => {
+    // console.log("delete comment");
+    // console.log({commentId, authorId});
+    const commentData = await prisma.comment.findFirst({
+        where: {
+            id: commentId,
+            authorId
+        },
+        select: {
+            id: true
+        }
+    })
+
+    console.log(commentData);
+    if (!commentData) {
+        throw new Error("Your Provided input is invalid1")
+    }
+
+    return await prisma.comment.delete({
+        where: {
+            id: commentData.id
+        }
+    })
+}
+
 export const CommentService = {
     createComment,
     getCommentById,
-    getCommentByAuthor
+    getCommentByAuthor,
+    deleteComment
 }
