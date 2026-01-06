@@ -3,6 +3,7 @@ import { postService } from "./post.service"
 import { PostStatus } from "../../../generated/prisma/enums";
 import paginationSortingHelper from "../../helpers/paginationSortingHelper";
 import { error } from "node:console";
+import { UserRole } from "../../middlewares/auth";
 
 const createPost = async (req: Request, res: Response) => {
     // res.send("Create a new post")
@@ -116,7 +117,9 @@ const updatePost = async (req: Request, res: Response) => {
         }
 
         const {postId} = req.params;
-        const result = await postService.updatePost(postId as string,req.body, user.id);
+        const isAdmin = user.role === UserRole.ADMIN;
+        // console.log(user);
+        const result = await postService.updatePost(postId as string,req.body, user.id, isAdmin);
         res.status(200).json(result)
     } catch (e) {
           const errorMessage = (e instanceof Error) ? e.message : "Post update failed"

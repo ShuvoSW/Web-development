@@ -226,7 +226,7 @@ const getMyPosts = async (authorId: string) => {
 // user - sudhu nijar post update korte parb, isFeatured update korte parbe na.
 // admin - sobar post update korte parbe.
 
-const updatePost = async (postId: string, data: Partial<Post>, authorId: string) => {
+const updatePost = async (postId: string, data: Partial<Post>, authorId: string, isAdmin: boolean) => {
     // console.log({postId, data, authorId});
     const postData = await prisma.post.findUniqueOrThrow({
         where: {
@@ -238,8 +238,13 @@ const updatePost = async (postId: string, data: Partial<Post>, authorId: string)
         }
     })
 
-    if(postData.authorId !== authorId) {
+    // if((postData.authorId !== authorId) && !isAdmin) 
+    if(!isAdmin && (postData.authorId !== authorId)) {
         throw new Error("You are not the owner/creator of the post!")
+    }
+
+    if(!isAdmin) {
+         delete data.isFeatured
     }
 
     const result = await prisma.post.update({
