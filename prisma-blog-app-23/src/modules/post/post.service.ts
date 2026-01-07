@@ -288,7 +288,7 @@ const getStats = async () => {
     // postCount, publishedPosts, draftPosts, totalComments, totalViews
     return await prisma.$transaction(async (tx) => {
 
-        const [totalPosts, publishedPosts, draftPosts, archivedPosts, totalComments, approvedComment] = await Promise.all([
+        const [totalPosts, publishedPosts, draftPosts, archivedPosts, totalComments, approvedComment,rejectComment , totalUsers, adminCount, userCount, totalViews] = await Promise.all([
 
             await tx.post.count(),
 
@@ -300,7 +300,17 @@ const getStats = async () => {
 
             await tx.comment.count(),
 
-            await tx.comment.count({where: {status: CommentStatus.APPROVED}})
+            await tx.comment.count({where: {status: CommentStatus.APPROVED}}),
+
+            await tx.comment.count({where: {status: CommentStatus.REJECT}}),
+
+            await tx.user.count(),
+
+            await tx.user.count({ where: { role: "ADMIN"}}),
+
+            await tx.user.count({ where: {role: "USER"}}),
+
+            await tx.post.aggregate({ _sum: { views: true}})
 
         ])
 
@@ -330,7 +340,12 @@ const getStats = async () => {
             draftPosts,
             archivedPosts,
             totalComments,
-            approvedComment
+            approvedComment,
+            rejectComment, 
+            totalUsers, 
+            adminCount, 
+            userCount,
+            totalViews: totalViews._sum.views
         }
     })
 }
