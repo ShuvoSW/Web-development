@@ -4,7 +4,7 @@ export const sendResponse = (res: ServerResponse, success: boolean, statusCode: 
 ) => {
 
     const response = {
-        success : success,
+        success: success,
         message: message,
         data: data
     }
