@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express"
 import { Prisma } from "../../generated/prisma/client";
 
-function errorHandler (
+function errorHandler(
     err: any,
-    req: Request, 
-    res: Response, 
+    req: Request,
+    res: Response,
     next: NextFunction
 ) {
     let statusCode = 500;
@@ -12,11 +12,11 @@ function errorHandler (
     let errorDetails = err
 
     // PrismaClientValidationError
-    if(err instanceof Prisma.PrismaClientValidationError){
+    if (err instanceof Prisma.PrismaClientValidationError) {
         statusCode = 400;
         errorMessage = "You provide incorrect field type or missing fields!"
     } else if (err instanceof Prisma.PrismaClientKnownRequestError) {
-        if(err.code === "P2025") {
+        if (err.code === "P2025") {
             statusCode = 400;
             errorMessage = "An operation failed because it depends on one or more records that were required but not found."
         }
@@ -34,19 +34,22 @@ function errorHandler (
         errorMessage = "Error occurred during query execution"
     }
     else if (err instanceof Prisma.PrismaClientInitializationError) {
-        if(err.errorCode === "P1000f"){
+        if (err.errorCode === "P1000f") {
             statusCode = 401;
             errorMessage = "Authentication failed. Please check your credentials!"
         }
-       
+        else if (err.errorCode === "P1001") {
+            statusCode = 400;
+            errorMessage = "Can't reach database server at"
+        }
     }
 
-  res.status(statusCode)
-//   res.render('error from error handler ---', { error: err })
-res.json({
-    message: errorMessage,
-    error: errorDetails
-})
+    res.status(statusCode)
+    //   res.render('error from error handler ---', { error: err })
+    res.json({
+        message: errorMessage,
+        error: errorDetails
+    })
 }
 
 export default errorHandler;
