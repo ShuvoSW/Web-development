@@ -14,11 +14,21 @@ app.use(
 );
 
 // betters auth routes
-app.all("/api/auth/*splat", toNodeHandler(auth));
+app.all("/api/v1/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json())
 
-
+async function createAdmin() {
+    await auth.api.createUser({
+        body: {
+           name: "Shuvo",
+           email: "shuvomajumder3369@gmail.com",
+           password: "123456",
+           role: "admin"
+        }
+    })
+}
+// createAdmin() // run once to create admin user or seedAdmin
 
 app.use("/api/v1", routes)
 
