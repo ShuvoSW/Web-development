@@ -15,10 +15,16 @@ export const auth = betterAuth({
         minPasswordLength: 6
         // password: {
             
-        // }
+        // }    
+    },
+
+    socialProviders: {
+        github: {
+            clientId:process.env.GITHUB_CLIENT_ID as string,
+            clientSecret:process.env.GITHUB_CLIENT_SECRET as string,
+            redirectURI:`${process.env.FRONTEND_URL}/api/auth/callback/github`
+        }
     }
-
-
 })
 
 //   advanced: { disableOriginCheck: true }
