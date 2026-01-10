@@ -29,7 +29,10 @@ const loginUserIntoDB = async (email: string, password: string) => {
 
     const token = jwt.sign(jwtPayload, secret, {expiresIn: "7d"})
 
-    return user
+    return {token, user: user.rows[0]}
+    // return user
+
+    console.log(user);
 
 
 }

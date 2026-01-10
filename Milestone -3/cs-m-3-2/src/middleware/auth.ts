@@ -1,13 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 
-const auth = (req: Request, res: Response, next: NextFunction) => {
-    
-const ID = true;
+const auth = () => {
 
-if (!ID) {
-    throw new Error("Not Allowed")
+    return async (req: Request, res: Response, next: NextFunction) => {
+        const token = req.headers.authorization;
+        console.log(token);
+        next()
+    }
 }
-next();
-}
+
+
+
+
 
 export default auth;
