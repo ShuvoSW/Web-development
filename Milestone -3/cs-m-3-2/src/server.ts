@@ -3,10 +3,10 @@ import { userRouter } from "./modules/user/user.router";
 import { initDB } from "./database/db";
 import { authRouter } from "./modules/auth/auth.router";
 
+
 const app = express()
 
 app.use(express.json());
-
 
 initDB();
 
