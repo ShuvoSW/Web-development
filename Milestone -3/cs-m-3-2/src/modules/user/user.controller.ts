@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { pool } from "../../database/db";
 import { userService } from "./user.service";
 
 const  createController = async (req: Request, res: Response) => {
