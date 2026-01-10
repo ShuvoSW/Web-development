@@ -4,11 +4,9 @@ import { prisma } from "./prisma";
 import { admin, twoFactor } from "better-auth/plugins";
 import { Resend } from 'resend';
 import { adminRole, userRole } from "./permissions";
-// import { createAccessControl } from "better-auth/plugins/access";
+
 
 const resend = new Resend("re_diancUhh_D8ftRe4Dt9hCbyEroNUgZPXh");
-
-
 
 export const auth = betterAuth({
 
@@ -22,19 +20,17 @@ export const auth = betterAuth({
 
     trustedOrigins: [process.env.FRONTEND_URL!],
 
-    rateLimit: { //url user define
+    rateLimit: {                                   //url user define
         enabled: true,
-        window:10,
+        window: 10,
         max: 2,
         customRules: {
             "ok": {
                 max: 1,
                 window: 60
             }
-
-           
         },
-         storage: "memory"
+        storage: "memory"
     },
 
     advanced: {

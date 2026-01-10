@@ -6,6 +6,6 @@ const equipmentRouter: Router = Router()
 
 equipmentRouter.post("/", auth("equipment", "create"), equipmentController.createEquipment as RequestHandler);
 
-equipmentRouter.get("/", auth("equipment", "read"), equipmentController.getEquipments as RequestHandler);
+equipmentRouter.get("/",auth("equipment", "read"), equipmentController.getEquipments as RequestHandler);
 
 export default equipmentRouter

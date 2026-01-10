@@ -13,5 +13,6 @@ export const adminRole = ac.newRole({
 });
 
 export const userRole = ac.newRole({
-    user: ["read", "update"]
+    equipment: ["read", "update"]
 });
+
