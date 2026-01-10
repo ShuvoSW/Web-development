@@ -1,7 +1,9 @@
 import { Pool } from "pg";
+// import database from "."
 
 export const pool = new Pool({
-    connectionString: 'postgresql://neondb_owner:npg_DVesdRHhK0M1@ep-quiet-pond-a83ihk48-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require'
+    // connectionString: `${database.CONNECTION_STR}`
+    connectionString: "postgresql://neondb_owner:npg_DVesdRHhK0M1@ep-quiet-pond-a83ihk48-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require"
 });
 
 export const initDB = async () => {
