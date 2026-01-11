@@ -199,66 +199,81 @@
 // Nullish coalescing or ??
 
 // let num = null 
-let num =  undefined
-let display = num ?? 30;
-console.log(display);
+// let num =  undefined
+// let display = num ?? 30;
+// console.log(display);
 
-type TUser = {
-    name: string;
-    age?: number | null;
-};
+// type TUser = {
+//     name: string;
+//     age?: number | null;
+// };
 
-let user1: TUser = {name: 'Shuvo', age: null};
-let user2: TUser = {name: 'Shuvo'};
+// let user1: TUser = {name: 'Shuvo', age: null};
+// let user2: TUser = {name: 'Shuvo'};
 
-let age1 = user1.age ?? 18
-let age2 = user1.age ?? 18
+// let age1 = user1.age ?? 18
+// let age2 = user1.age ?? 18
 
-console.log(age1, age2);
+// console.log(age1, age2);
 
-// Function
-function greet (name: string): string {
-    return `Hello ${name}`;
-}
+// // Function
+// function greet (name: string): string {
+//     return `Hello ${name}`;
+// }
 
-console.log(greet('Shuvo'));
+// console.log(greet('Shuvo'));
 
-function UC(arr: string[]): string[] {
-    let toUpper = arr.map((item) => item.toUpperCase())
-    return toUpper;
-}
+// function UC(arr: string[]): string[] {
+//     let toUpper = arr.map((item) => item.toUpperCase())
+//     return toUpper;
+// }
 
-const cities = ['dhaka', 'rajshahi'];
-console.log(UC(cities));
+// const cities = ['dhaka', 'rajshahi'];
+// console.log(UC(cities));
 
-function UCL(arr: string[], minLength: number): string[] {
+// function UCL(arr: string[], minLength: number): string[] {
  
-    return arr.filter((word) => word.length >= minLength)
-}
+//     return arr.filter((word) => word.length >= minLength)
+// }
 
-const citiesAll = ['dhaka', 'rajshahi'];
-console.log(UCL(citiesAll, 6));
+// const citiesAll = ['dhaka', 'rajshahi'];
+// console.log(UCL(citiesAll, 6));
 
-function greets(msg: string): void {
-    console.log(msg);
-}
-greets('Hello')
+// function greets(msg: string): void {
+//     console.log(msg);
+// }
+// greets('Hello')
 
-// Partial
-type TUSer = {
-    name: string;
-    email: string;
-    number: string;
-}
+// // Partial
+// type TUSer = {
+//     name: string;
+//     email: string;
+//     number: string;
+// }
 
-const user: Partial<TUSer>  = {
-    name: "Shuvo"
-}
+// const user: Partial<TUSer>  = {
+//     name: "Shuvo"
+// }
 
 // Record
- type TSTd = 'Shuvo' | "Joy"
+ type TStd = 'Shuvo' | "Joy"
 
- const roll: Record<TSTd, number> = {
+ const roll: Record<TStd, number> = {
     Shuvo: 25,
     Joy: 10
+ }
+
+ console.log(roll.Shuvo);
+
+ // Pick
+ type User = {
+    name: string;
+    email: string;
+    password: string;
+ };
+
+ type PickType = Pick<User, 'name'>;
+
+ const user: PickType = {
+    name: "Shuvo"
  }
