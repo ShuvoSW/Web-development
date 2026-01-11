@@ -256,24 +256,48 @@
 // }
 
 // Record
- type TStd = 'Shuvo' | "Joy"
+//  type TStd = 'Shuvo' | "Joy"
 
- const roll: Record<TStd, number> = {
-    Shuvo: 25,
-    Joy: 10
- }
+//  const roll: Record<TStd, number> = {
+//     Shuvo: 25,
+//     Joy: 10
+//  }
 
- console.log(roll.Shuvo);
+//  console.log(roll.Shuvo);
 
  // Pick
- type User = {
-    name: string;
-    email: string;
-    password: string;
- };
+//  type User = {
+//     name: string;
+//     email: string;
+//     password: string;
+//  };
 
- type PickType = Pick<User, 'name'>;
+//  type PickType = Pick<User, 'name'>;
 
- const user: PickType = {
-    name: "Shuvo"
- }
+//  const user: PickType = {
+//     name: "Shuvo"
+//  }
+
+ // Omit
+
+// interface Todo {
+//     name: string;
+//     email: string;
+//     password: string;
+//  };
+
+//  type TodoPreview = Omit<Todo, 'password'>;
+
+//  const tode: TodoPreview = {
+//     name: "Shuvo",
+//     email: "ldjfldjf"
+//  }
+
+ // Promise
+const promise: Promise<number> = Promise.resolve(2);
+
+type withoutAwait = typeof promise
+
+type typeCheck = Awaited<typeof promise>
+
+promise.then((value) => console.log(value))
