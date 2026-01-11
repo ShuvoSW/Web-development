@@ -243,3 +243,22 @@ function greets(msg: string): void {
     console.log(msg);
 }
 greets('Hello')
+
+// Partial
+type TUSer = {
+    name: string;
+    email: string;
+    number: string;
+}
+
+const user: Partial<TUSer>  = {
+    name: "Shuvo"
+}
+
+// Record
+ type TSTd = 'Shuvo' | "Joy"
+
+ const roll: Record<TSTd, number> = {
+    Shuvo: 25,
+    Joy: 10
+ }
