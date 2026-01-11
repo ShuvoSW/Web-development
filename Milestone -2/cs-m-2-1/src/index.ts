@@ -110,41 +110,108 @@
 // data = 20;
 // data = true
 
-// Intersection
+// // Intersection
 
-type TPersonName = {name: string};
-type TPersonAge = {age: number};
+// type TPersonName = { name: string };
+// type TPersonAge = { age: number };
 
-let person2: TPersonName & TPersonAge = {
-    name: 'Shuvo',
-    age: 25
-}
+// let person2: TPersonName & TPersonAge = {
+//     name: 'Shuvo',
+//     age: 25
+// }
 
-console.log(person2);
+// console.log(person2);
 
-// Alias 
-type TStdRoll = number;
+// // Alias 
+// type TStdRoll = number;
 
-let stdRoll: TStdRoll = 1
-let stdName: string = 'Shuvo'
+// let stdRoll: TStdRoll = 1
+// let stdName: string = 'Shuvo'
 
-// Generic
- function fName<T>(value: T): T {
-    return value;
- }
+// // Generic
+// function fName<T>(value: T): T {
+//     return value;
+// }
 
- function greet<T>(value: T): T {
-    return value;
- }
+// function greet<T>(value: T): T {
+//     return value;
+// }
 
- let result = greet<string>('Shuvo');
- let num = greet<number>(2);
- console.log(result);
- console.log(num);
+// let result = greet<string>('Shuvo');
+// let num = greet<number>(2);
+// console.log(result);
+// console.log(num);
 
-function getFirstIndex<T>(arr: T[]):T | undefined {
-    return arr[0]
-}
+// function getFirstIndex<T>(arr: T[]): T | undefined {
+//     return arr[0]
+// }
 
- let number =getFirstIndex<number>([30, 40]);
- let name =getFirstIndex<string>(['Shuvo', 'joy']);
+// let number = getFirstIndex<number>([30, 40]);
+// let name = getFirstIndex<string>(['Shuvo', 'joy']);
+
+// function length<T extends { length: number }>(value: T): void {
+//     console.log(value.length);
+// }
+
+// let len = "hello";
+// console.log(length(len));
+
+// // Rest 
+// function add(...num: number[]): number {    // Rest 
+//     return num.reduce((a, b) => a + b, 0);
+// }
+// // console.log(add(1));
+// console.log(add(1, 2, 3, 4, 5));
+
+// // Spread
+// let arr1 = [1, 2, 3]
+
+// let arr2 = [...arr1, 4, 5]    // Spread
+// console.log(arr2);
+
+// // Optional chaining
+
+// let person3: {
+//     name: string;
+//     age: number;
+//     city?: string;
+// } = {
+//     name: 'Shuvo',
+//     age: 25,
+    
+// };
+
+// console.log(person3);
+
+// // Ternary operator
+// let person4: {
+//     name: string;
+//     age: number;
+//     gender: 'Male' | 'Female';
+// } = {
+//     name: 'Shuvo',
+//     age: 25,
+//     gender: 'Male'
+// };
+
+// console.log(person4);
+
+// Nullish coalescing or ??
+
+// let num = null 
+let num =  undefined
+let display = num ?? 30;
+console.log(display);
+
+type TUser = {
+    name: string;
+    age?: number | null;
+};
+
+let user1: TUser = {name: 'Shuvo', age: null};
+let user2: TUser = {name: 'Shuvo'};
+
+let age1 = user1.age ?? 18
+let age2 = user1.age ?? 18
+
+console.log(age1, age2);
