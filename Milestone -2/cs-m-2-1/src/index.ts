@@ -215,3 +215,31 @@ let age1 = user1.age ?? 18
 let age2 = user1.age ?? 18
 
 console.log(age1, age2);
+
+// Function
+function greet (name: string): string {
+    return `Hello ${name}`;
+}
+
+console.log(greet('Shuvo'));
+
+function UC(arr: string[]): string[] {
+    let toUpper = arr.map((item) => item.toUpperCase())
+    return toUpper;
+}
+
+const cities = ['dhaka', 'rajshahi'];
+console.log(UC(cities));
+
+function UCL(arr: string[], minLength: number): string[] {
+ 
+    return arr.filter((word) => word.length >= minLength)
+}
+
+const citiesAll = ['dhaka', 'rajshahi'];
+console.log(UCL(citiesAll, 6));
+
+function greets(msg: string): void {
+    console.log(msg);
+}
+greets('Hello')
