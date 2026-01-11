@@ -66,3 +66,20 @@ enum Role {
 }
 
 // if(Role.Admin === "Admin") // Example
+
+// any
+let box: any = "Hello";
+box = 2;
+
+// void
+function greet(): void {
+    console.log('Good morning');
+}
+
+greet()
+
+// number type return function 
+
+function add(a: number, b: number): number {
+    return a + b;
+}
