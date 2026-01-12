@@ -1,23 +1,24 @@
 "use client";
 
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+// import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 import {
   Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+  // AccordionContent,
+  // AccordionItem,
+  // AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
+  // NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
+  // NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -138,8 +139,8 @@ const Navbar = ({
     },
   ],
   auth = {
-    login: { title: "Login", url: "#" },
-    signup: { title: "Sign up", url: "#" },
+    login: { title: "Login", url: "/login" },
+    signup: { title: "Register", url: "/register" },
   },
   className,
 }: Navbar1Props) => {
@@ -171,11 +172,11 @@ const Navbar = ({
           <div className="flex gap-2">
             <Button asChild variant="outline" size="sm">
               {/* <a href={auth.login.url}>{auth.login.title}</a> */}
-              <a href="/login">{auth.login.title}</a>
+              <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
             <Button asChild size="sm">
               {/* <a href={auth.signup.url}>{auth.signup.title}</a> */}
-              <a href="sign-in">{auth.signup.title}</a>
+              <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
           </div>
         </nav>
@@ -220,10 +221,12 @@ const Navbar = ({
 
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
+                      {/* <a href={auth.login.url}>{auth.login.title}</a> */}
+                      <Link href={auth.login.url}>{auth.login.title}</Link>
                     </Button>
                     <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
+                      {/* <a href={auth.signup.url}>{auth.signup.title}</a> */}
+                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
                     </Button>
                   </div>
                 </div>
