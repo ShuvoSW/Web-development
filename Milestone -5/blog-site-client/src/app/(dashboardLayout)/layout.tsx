@@ -24,6 +24,11 @@ export default function DashboardLayout({
     admin: React.ReactNode;
     user: React.ReactNode;
 }) {
+
+  const userInfo = {
+    role: "admin"
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -56,8 +61,9 @@ export default function DashboardLayout({
           </div>
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" /> */}
           {/* {children} */}
-          {admin}
-          {user}
+          {/* {admin}
+          {user} */}
+          {userInfo.role === "admin" ? admin : user}
         </div>
       </SidebarInset>
     </SidebarProvider>
