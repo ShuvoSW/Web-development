@@ -27,6 +27,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { ModeToggle } from "./theme/Toggler";
+
+
+
+
 
 
 interface MenuItem {
@@ -145,6 +150,7 @@ const Navbar1 = ({
   className,
 }: Navbar1Props) => {
   return (
+    
     <section className={cn("py-4", className)}>
       <div className="container">
         {/* Desktop Menu */}
@@ -170,13 +176,16 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle/>
             <Button asChild variant="outline" size="sm">
               <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
             <Button asChild size="sm">
               <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
+            
           </div>
+          
         </nav>
 
         {/* Mobile Menu */}
