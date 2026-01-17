@@ -1,5 +1,4 @@
 "use client";
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -25,9 +24,10 @@ export function LoginForm({
 
   const handleGoogleLogin = async () => {
     const data = authClient.signIn.social({
-      provider: "google"
+      provider: "google",
+      callbackURL: "http://localhost:3000",
     })
-    console.log(data);
+    console.log(data)
   }
 
   return (
