@@ -1,7 +1,11 @@
 import app from "./app";
 import { prisma } from "./lib/prisma";
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3000; // 5000 are best 
+=======
+const PORT = process.env.PORT // || 5000 are best 
+>>>>>>> d25b790 (first commit)
 
 async function main() {
 
