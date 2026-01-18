@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar1 } from "@/components/navbar1";
 import { ThemeProvider } from "@/providers/theme-provider";
+import analytic from "./(dashboard)/dashboard/@analytic/page";
+import team from "./(dashboard)/dashboard/@team/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +23,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+ 
 }: Readonly<{
   children: React.ReactNode;
+  analytic: React.ReactNode;
+  team: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -31,11 +36,13 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
           <Navbar1 />
+          
+
           {children}
         </ThemeProvider>
       </body>
