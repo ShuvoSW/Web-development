@@ -5,7 +5,7 @@ export default function CommonLayout({children}: {
 }) {
   return (
      
-    <div> 
+    <div > 
         <Navbar />
         {children}
         </div>
