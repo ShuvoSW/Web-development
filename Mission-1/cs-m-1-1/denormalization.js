@@ -14,6 +14,29 @@ const snacks = [
     {id: 205, studentId: 2, title: "Nuts"}, 
 ]
 
+const mainBasket = snacks.reduce((basket, snack) => {
+    // console.log(basket);
+    // console.log(snack);
+    const {studentId} = snack;
+
+    if (!basket[studentId]) {
+      basket[studentId] = [];  
+    }
+    basket[studentId].push(snack);
+    // console.log(basket);
+    return basket
+}, {})
+
+// console.log(mainBasket);
+
+const studentWithSnacks = students.map(student => ({
+    ...student,
+    basket: mainBasket[student.id] || []
+}))
+
+// console.log(studentWithSnacks);
+console.log(JSON.stringify(studentWithSnacks));
+
 /*
 Output
 [
