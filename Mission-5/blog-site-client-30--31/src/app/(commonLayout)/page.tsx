@@ -25,8 +25,8 @@ export default async function Home() {
   // const session = await res.json()
   // console.log(session);
 
-const {data} = await userService.getSession();
-console.log(data);
+// const {data} = await userService.getSession();
+// console.log(data);
   return (
     <div>
       <Button variant="outline">Click Here</Button>
