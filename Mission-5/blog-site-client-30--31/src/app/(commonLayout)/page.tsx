@@ -31,7 +31,14 @@ export default async function Home() {
 // const {data} = await userService.getSession();
 // console.log(data);
 
-const {data} = await blogService.getBlogPosts();
+const {data} = await blogService.getBlogPosts({
+  isFeatured: false,
+  // search: "dfff"
+}, 
+{
+  cache: "no-store",
+  // revalidate: 10
+});
 console.log(data);
 
   return (
