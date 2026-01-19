@@ -16,7 +16,7 @@ export async function proxy(request: NextRequest) {
         isAuthenticated = true;
         isAdmin = data.user.role === Roles.admin;
     }
-    console.log(isAdmin);
+    // console.log(isAdmin);
 
     //* User is not authenticated at all
     if (!isAuthenticated) {
@@ -40,5 +40,9 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/dashboard"]
+    matcher: ["/dashboard", 
+        "/dashboard/:path*", 
+        "/admin-dashboard",
+        "/admin-dashboard/:path*"
+    ]
 }
