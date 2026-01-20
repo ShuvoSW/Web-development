@@ -23,7 +23,13 @@ const binningRange = (timestamp) => {
 
 const binnedTable = logins.reduce((acc, login) => {
     const bin = binningRange(login.timestamp)
-    console.log(bin);
+    // console.log(bin);
+
+    if (!acc[bin]) {
+        acc[bin] = {total: 0};
+    }
+    acc[bin].total +=1;
+    return acc;
 }, {})
 console.log(binnedTable);
 
