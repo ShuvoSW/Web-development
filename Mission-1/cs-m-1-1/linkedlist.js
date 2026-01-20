@@ -8,7 +8,7 @@ class Node {
 class LinkedList{
     constructor(){
         this.head = null
-        this.tall = null
+        this.tail = null
         this.length = 0
     }
 
@@ -18,11 +18,57 @@ class LinkedList{
 
         if(this.head === null){
             this.head = newNode
-            this.tall = newNode
+            this.tail = newNode
         } else{
-            this.tall.next = newNode
-            this.tall = newNode
+            this.tail.next = newNode
+            this.tail = newNode
         }
+        this.length++
+        return this
+    }
+
+    prepend(value) {
+        const newNode = new Node(value)
+        if (this.head === null){
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+        this.length++
+        return this
+    }
+
+    insert(index, value) {
+        if(index < 0 || index > this.length){
+            console.log("Invalid Index");
+            return
+        }
+        if (index === 0) {
+            return this.prepend(value);
+        }
+        if(index === this.length) {
+            return this.append(value)
+        }
+
+        const newNode = new Node(value);
+
+        const leadingNode = this.traverseToIndex(index - 1)
+        const holdingNode = leadingNode.next
+        leadingNode.next = newNode
+        newNode.next = holdingNode
+        this.length++
+    }
+
+    traverseToIndex(index) {
+        let count = 0
+        const currentNode = this.head // 0
+        while(count !== index) {
+            currentNode = currentNode.next
+            count++
+        }  
+        return currentNode
     }
 
     print() {
@@ -40,4 +86,7 @@ const  linkedList = new LinkedList()
 
 linkedList.append("A")
 linkedList.append("B")
+linkedList.prepend("A'")
+linkedList.print()
+linkedList.insert(1,"C")
 linkedList.print()
