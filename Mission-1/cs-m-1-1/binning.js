@@ -10,6 +10,23 @@ const logins = [
     {timestamp: "2025-11-07T10:50:00Z", student: "Ahuvo"},
 ]
 
+const interval = 30 * 60 * 1000; 
+
+const binningRange = (timestamp) => {
+    const date = new Date(timestamp);
+    const floored = Math.floor(date.getTime() / interval) * interval;
+
+    return new Date(floored).toString();
+}
+
+// console.log(binningRange("2025-11-07T10:50:00Z"));
+
+const binnedTable = logins.reduce((acc, login) => {
+    const bin = binningRange(login.timestamp)
+    console.log(bin);
+}, {})
+console.log(binnedTable);
+
 /*
 Output
 {
