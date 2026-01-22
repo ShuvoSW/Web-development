@@ -1,20 +1,37 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { FieldGroup } from "@/components/ui/field"
+import {useForm} from "@tanstack/react-form"
+
+// import {
+//   Field,
+//   FieldDescription,
+//   FieldGroup,
+//   FieldLabel,
+// } from "@/components/ui/field"
+// import { Input } from "@/components/ui/input"
 
 export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
+
+  const form = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      password: ""
+    },
+    onSubmit: async ({value}) => {
+      // console.log(value);
+      console.log("Submit Clicked");
+    }
+  })
   return (
     <Card {...props}>
       <CardHeader>
@@ -24,8 +41,13 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
-          <FieldGroup>
+        <form
+        id="login-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          form.handleSubmit();
+        }}>
+          {/* <FieldGroup>
             <Field>
               <FieldLabel htmlFor="name">Full Name</FieldLabel>
               <Input id="name" type="text" placeholder="John Doe" required />
@@ -68,9 +90,20 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
                 </FieldDescription>
               </Field>
             </FieldGroup>
+          </FieldGroup> */}
+          
+          <FieldGroup>
+            <form.Field name="name" children={() => <Field></Field>}/>
           </FieldGroup>
+
         </form>
       </CardContent>
+
+      <CardFooter className="flex justify-end">
+
+          <Button form="login-form" type="submit">Submit</Button>
+
+      </CardFooter>
     </Card>
   )
 }
