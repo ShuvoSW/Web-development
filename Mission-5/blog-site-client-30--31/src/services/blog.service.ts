@@ -34,7 +34,11 @@ export const blogService = {
                 config.cache = options.cache;
             }
 
-            if (options?.cache) {
+            // if (options?.cache) {
+            //     config.next = {revalidate: options.revalidate};
+            // }
+            
+            if (options?.revalidate) {
                 config.next = {revalidate: options.revalidate};
             }
 
@@ -60,7 +64,7 @@ export const blogService = {
 
     getBlogById: async function (id: string) {
         try {
-            const res = await fetch(`$API_URL/posts/${id}`);
+            const res = await fetch(`${API_URL}/posts/${id}`);
 
             const data = await res.json();
 
