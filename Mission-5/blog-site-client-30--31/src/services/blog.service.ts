@@ -1,4 +1,7 @@
+import { createBlogPost } from "@/actions/blog.action";
 import { env } from "@/env"
+import { error } from "console";
+import { cookies } from "next/headers";
 
 const API_URL = env.API_URL;
 
@@ -14,6 +17,18 @@ interface GetBlogParams {
     isFeatured?: boolean;
     search?: string;
 }
+// export interface BlogData {
+//   title: string;
+//   content: string;
+//   tag?: string[];
+// }
+
+export interface BlogData {
+    title: string;
+    content: string;
+    tag?: string;
+}
+
 export const blogService = {
     getBlogPosts: async function (params?: GetBlogParams, options?: ServiceOptions) {
 
@@ -42,6 +57,7 @@ export const blogService = {
                 config.next = {revalidate: options.revalidate};
             }
 
+             config.next = { ...config.next, tags: ["blogPosts"] };
                 // config.next = {...config.next, tags: ["blogPosts"]};
 
             // const res = await fetch(`${API_URL}/posts`, {next: {revalidate: 10}}); // ISR run  -   {next: {revalidate: 10}}
@@ -82,5 +98,61 @@ export const blogService = {
         } catch (err) {
             return {data: null, error: { message: "Something Went Wrong"}};
         }
+    },
+
+//     createBlogPost: async (blogData: BlogData) => {
+//     try {
+//       const cookieStore = await cookies();
+
+//       const res = await fetch(`${API_URL}/posts`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Cookie: cookieStore.toString(),
+//         },
+//         body: JSON.stringify(blogData),
+//       });
+
+//       const data = await res.json();
+
+//       if (data.error) {
+//         return {
+//           data: null,
+//           error: { message: "Error: Post not created." },
+//         };
+//       }
+
+//       return { data: data, error: null };
+//     } catch (err) {
+//       return { data: null, error: { message: "Something Went Wrong" } };
+//     }
+//   },
+
+createBlogPost: async (blogData: BlogData) => {
+    try {
+                const cookieStore = await cookies()
+        
+                const res = await fetch(`${API_URL}/posts`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        Cookie: cookieStore.toString(),
+                    },
+                    body: JSON.stringify(blogData),
+                })
+
+                const data = await res.json();
+                if(data.error) {
+                    return {
+                        data: null,
+                        error: {message: "Error: Post not created"} 
+                    }
+                }
+        
+                return {data: data, error: null};
+    } catch (err) {
+        return {data: null, error: {message: "Something Went Wrong"}};
     }
+}
+
 }
