@@ -17,6 +17,7 @@ interface GetBlogParams {
     isFeatured?: boolean;
     search?: string;
     page?: string;
+    limit?: string;
 }
 // export interface BlogData {
 //   title: string;
