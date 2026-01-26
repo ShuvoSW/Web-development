@@ -42,8 +42,18 @@ export const blogService = {
                 config.next = {revalidate: options.revalidate};
             }
 
+                // config.next = {...config.next, tags: ["blogPosts"]};
+
             // const res = await fetch(`${API_URL}/posts`, {next: {revalidate: 10}}); // ISR run  -   {next: {revalidate: 10}}
-            const res = await fetch(url.toString(), config); // ISR run  -   {next: {revalidate: 10}}  and // important - fetch(url,toString())
+            // const res = await fetch(url.toString(), config); // ISR run  -   {next: {revalidate: 10}}  and // important - fetch(url,toString())
+
+            // const res = await fetch(url.toString(), {
+            //     next: {
+            //         tags: ["blogPosts"],
+            //     }
+            // });
+
+            const res = await fetch(url.toString(), config);
            
 
             // url.searchParams.append("Key", "Value");

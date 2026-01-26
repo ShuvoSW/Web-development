@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { env } from "@/env";
+import { revalidateTag, updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { toast } from "sonner";
@@ -35,11 +36,16 @@ export default function CreateBlogFormServer() {
             body: JSON.stringify(blogData),
         })
 
-        if (res.status) {
-            redirect("/dashboard/create-blog?success")
+        if(res.ok) {
+            revalidateTag("blogPosts", "max"); // When user visit then fetch data
+            //updateTag("blogPosts"); // Instant data update
         }
+
+        // if (res.status) {
+        //     redirect("/dashboard/create-blog?success")
+        // }
         
-        toast("Success")
+        // toast("Success")
 
         // console.log(res);
         // console.log(formData.get("title"));
