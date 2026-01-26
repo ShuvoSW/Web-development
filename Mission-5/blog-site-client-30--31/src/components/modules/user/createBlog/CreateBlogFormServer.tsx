@@ -2,13 +2,48 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { env } from "@/env";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { toast } from "sonner";
+
+const API_URL = env.API_URL;
 
 export default function CreateBlogFormServer() {
 
     const createBlog = async (formData: FormData) => {
         "use server"
 
-        console.log(formData.get("title"));
+        const  title = formData.get("title") as string;
+        const  content = formData.get("content") as string;
+        const  tags = formData.get("tags") as string;
+
+        const blogData = {
+            title,
+            content,
+            tags: tags.split(",").map((item) => item.trim()).filter((item) => item !== "")
+        }
+
+        const cookieStore = await cookies()
+
+        const res = await fetch(`${API_URL}/posts`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                Cookie: cookieStore.toString(),
+            },
+            body: JSON.stringify(blogData),
+        })
+
+        if (res.status) {
+            redirect("/dashboard/create-blog?success")
+        }
+        
+        toast("Success")
+
+        // console.log(res);
+        // console.log(formData.get("title"));
+        // console.log(JSON.stringify(blogData));
     }
 
     return (
@@ -21,16 +56,18 @@ export default function CreateBlogFormServer() {
                     <form id="blog-form" action={createBlog}>
                         <FieldGroup>
                             <Field>
-                                <FieldLabel>Title</FieldLabel>
-                                <Input type="text" name="title"></Input>
+                                <FieldLabel htmlFor="title">Title</FieldLabel>
+                                <Input id="title" name="title" placeholder="Blog Title" required />
                             </Field>
                             <Field>
-                                <FieldLabel>Content</FieldLabel>
-                                <Input type="text" name="title"></Input>
+                                <FieldLabel htmlFor="content">Content</FieldLabel>
+                              
+                                <textarea id="content" name="content" placeholder="Write your blog" required />
+                              
                             </Field>
                             <Field>
-                                <FieldLabel>Tags</FieldLabel>
-                                <Input type="text" name="title"></Input>
+                                <FieldLabel htmlFor="tags">Tags</FieldLabel>
+                                <Input id="tags" name="tags" placeholder="nextjs, web" />
                             </Field>
                         </FieldGroup>
                     </form>
