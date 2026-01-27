@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { userService } from "./services/user.service";
 import { Roles } from "./constants/roles";
 
-export async function proxy(request: NextRequest) { 
+export async function proxy(request: NextRequest) {
     // console.log("Hello from proxy:", request.url);
     const pathname = request.nextUrl.pathname;
 
     let isAuthenticated = false;
     let isAdmin = false;
-    
-    const {data} = await userService.getSession();
+
+    const { data } = await userService.getSession();
     // console.log(data);
 
     if (data) {
@@ -40,8 +40,8 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/dashboard", 
-        "/dashboard/:path*", 
+    matcher: ["/dashboard",
+        "/dashboard/:path*",
         "/admin-dashboard",
         "/admin-dashboard/:path*"
     ]

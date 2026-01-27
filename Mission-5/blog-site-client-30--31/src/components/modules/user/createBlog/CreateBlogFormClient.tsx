@@ -58,31 +58,31 @@ export function CreateBlogFormClient() {
 
       console.log(blogData);
 
-    //   try {
-    //     const res = await createBlogPost(blogData);
+      //   try {
+      //     const res = await createBlogPost(blogData);
 
-    //     console.log(res);
+      //     console.log(res);
 
-    //     if (res.error) {
-    //       toast.error(res.error.message, { id: toastId });
-    //       return;
-    //     }
+      //     if (res.error) {
+      //       toast.error(res.error.message, { id: toastId });
+      //       return;
+      //     }
 
-    //     toast.success("Post Created", { id: toastId });
-    //   } catch (err) {
-    //     toast.error("Something Went Wrong", { id: toastId });
-    //   }
+      //     toast.success("Post Created", { id: toastId });
+      //   } catch (err) {
+      //     toast.error("Something Went Wrong", { id: toastId });
+      //   }
 
-    try {
-        const  res = await createBlogPost(blogData);
+      try {
+        const res = await createBlogPost(blogData);
 
         // console.log(res);
         if (res.error) {
-            toast.error(res.error.message, { id: toastId });
-            return
+          toast.error(res.error.message, { id: toastId });
+          return
         }
 
-       toast.success("Post Created", { id: toastId });
+        toast.success("Post Created", { id: toastId });
       } catch (err) {
         toast.error("Something Went Wrong", { id: toastId });
       }

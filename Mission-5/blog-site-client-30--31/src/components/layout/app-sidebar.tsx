@@ -159,19 +159,19 @@ import { Roles } from "@/constants/roles"
 //   ],
 // }
 
-export function AppSidebar({ user,...props }: { user:{role: string} & React.ComponentProps<typeof Sidebar>}) {
+export function AppSidebar({ user, ...props }: { user: { role: string } & React.ComponentProps<typeof Sidebar> }) {
 
   let routes: Route[] = [];
 
   switch (user.role) {
     case Roles.admin:
-    // case "admin":
+      // case "admin":
       routes = adminRoutes
       break;
     case Roles.user:
       routes = userRoutes
       break;
-  
+
     default:
       routes = []
       break;

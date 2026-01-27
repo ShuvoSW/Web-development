@@ -15,9 +15,9 @@ export default function CreateBlogFormServer() {
     const createBlog = async (formData: FormData) => {
         "use server"
 
-        const  title = formData.get("title") as string;
-        const  content = formData.get("content") as string;
-        const  tags = formData.get("tags") as string;
+        const title = formData.get("title") as string;
+        const content = formData.get("content") as string;
+        const tags = formData.get("tags") as string;
 
         const blogData = {
             title,
@@ -36,7 +36,7 @@ export default function CreateBlogFormServer() {
             body: JSON.stringify(blogData),
         })
 
-        if(res.ok) {
+        if (res.ok) {
             revalidateTag("blogPosts", "max"); // When user visit then fetch data
             //updateTag("blogPosts"); // Instant data update
         }
@@ -44,7 +44,7 @@ export default function CreateBlogFormServer() {
         // if (res.status) {
         //     redirect("/dashboard/create-blog?success")
         // }
-        
+
         // toast("Success")
 
         // console.log(res);
@@ -67,9 +67,9 @@ export default function CreateBlogFormServer() {
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="content">Content</FieldLabel>
-                              
+
                                 <textarea id="content" name="content" placeholder="Write your blog" required />
-                              
+
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="tags">Tags</FieldLabel>

@@ -38,7 +38,7 @@ export const blogService = {
             const url = new URL(`${API_URL}/posts`)
 
             // console.log(Object.entries(params));
-              if (params) {
+            if (params) {
                 Object.entries(params).forEach(([key, value]) => {
                     if (value !== undefined && value !== null && value !== "") {
                         url.searchParams.append(key, value)
@@ -54,13 +54,13 @@ export const blogService = {
             // if (options?.cache) {
             //     config.next = {revalidate: options.revalidate};
             // }
-            
+
             if (options?.revalidate) {
-                config.next = {revalidate: options.revalidate};
+                config.next = { revalidate: options.revalidate };
             }
 
-             config.next = { ...config.next, tags: ["blogPosts"] };
-                // config.next = {...config.next, tags: ["blogPosts"]};
+            config.next = { ...config.next, tags: ["blogPosts"] };
+            // config.next = {...config.next, tags: ["blogPosts"]};
 
             // const res = await fetch(`${API_URL}/posts`, {next: {revalidate: 10}}); // ISR run  -   {next: {revalidate: 10}}
             // const res = await fetch(url.toString(), config); // ISR run  -   {next: {revalidate: 10}}  and // important - fetch(url,toString())
@@ -72,7 +72,7 @@ export const blogService = {
             // });
 
             const res = await fetch(url.toString(), config);
-           
+
 
             // url.searchParams.append("Key", "Value");
             // console.log(url.toString());
@@ -84,9 +84,9 @@ export const blogService = {
             //     return
             // }
 
-            return {data: data, error: null};
+            return { data: data, error: null };
         } catch (err) {
-            return {data: null, error: {message: "Something Went Wrong"}};
+            return { data: null, error: { message: "Something Went Wrong" } };
         }
     },
 
@@ -96,65 +96,65 @@ export const blogService = {
 
             const data = await res.json();
 
-            return {data: data, error: null};
+            return { data: data, error: null };
         } catch (err) {
-            return {data: null, error: { message: "Something Went Wrong"}};
+            return { data: null, error: { message: "Something Went Wrong" } };
         }
     },
 
-//     createBlogPost: async (blogData: BlogData) => {
-//     try {
-//       const cookieStore = await cookies();
+    //     createBlogPost: async (blogData: BlogData) => {
+    //     try {
+    //       const cookieStore = await cookies();
 
-//       const res = await fetch(`${API_URL}/posts`, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Cookie: cookieStore.toString(),
-//         },
-//         body: JSON.stringify(blogData),
-//       });
+    //       const res = await fetch(`${API_URL}/posts`, {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           Cookie: cookieStore.toString(),
+    //         },
+    //         body: JSON.stringify(blogData),
+    //       });
 
-//       const data = await res.json();
+    //       const data = await res.json();
 
-//       if (data.error) {
-//         return {
-//           data: null,
-//           error: { message: "Error: Post not created." },
-//         };
-//       }
+    //       if (data.error) {
+    //         return {
+    //           data: null,
+    //           error: { message: "Error: Post not created." },
+    //         };
+    //       }
 
-//       return { data: data, error: null };
-//     } catch (err) {
-//       return { data: null, error: { message: "Something Went Wrong" } };
-//     }
-//   },
+    //       return { data: data, error: null };
+    //     } catch (err) {
+    //       return { data: null, error: { message: "Something Went Wrong" } };
+    //     }
+    //   },
 
-createBlogPost: async (blogData: BlogData) => {
-    try {
-                const cookieStore = await cookies()
-        
-                const res = await fetch(`${API_URL}/posts`, {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json",
-                        Cookie: cookieStore.toString(),
-                    },
-                    body: JSON.stringify(blogData),
-                })
+    createBlogPost: async (blogData: BlogData) => {
+        try {
+            const cookieStore = await cookies()
 
-                const data = await res.json();
-                if(data.error) {
-                    return {
-                        data: null,
-                        error: {message: "Error: Post not created"} 
-                    }
+            const res = await fetch(`${API_URL}/posts`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                    Cookie: cookieStore.toString(),
+                },
+                body: JSON.stringify(blogData),
+            })
+
+            const data = await res.json();
+            if (data.error) {
+                return {
+                    data: null,
+                    error: { message: "Error: Post not created" }
                 }
-        
-                return {data: data, error: null};
-    } catch (err) {
-        return {data: null, error: {message: "Something Went Wrong"}};
+            }
+
+            return { data: data, error: null };
+        } catch (err) {
+            return { data: null, error: { message: "Something Went Wrong" } };
+        }
     }
-}
 
 }

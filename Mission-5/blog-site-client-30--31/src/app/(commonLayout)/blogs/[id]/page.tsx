@@ -9,9 +9,10 @@ export const dynamicParams = false
 
 // [ {id: ajfslkdfjl}, {id: jfljffk}, {id: sjlk;sdj} ]
 export async function generateStaticParams() {
-    const {data} = await blogService.getBlogPosts();
 
-    return data?.data?.map((blog: BlogPost) => ({id: blog.id})).splice(0, 3)
+    const { data } = await blogService.getBlogPosts();
+
+    return data?.data?.map((blog: BlogPost) => ({ id: blog.id })).splice(0, 3)
 }
 
 export default async function BlogPage({
@@ -46,10 +47,12 @@ export default async function BlogPage({
     //! This can be used only in client component
     // const {id} = useParams();
     return (
+
         // <div>
         //     <h1> This is a dynamic page  {id} </h1>
 
         // </div>
+        
         <article className="container mx-auto px-4 py-12 max-w-2xl">
             {/* Header */}
             <header className="mb-8">

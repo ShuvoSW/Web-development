@@ -123,7 +123,7 @@ const formSchema = z.object({
 
 export function LoginForm({ ...props }: React.ComponentProps<typeof Card>) {
 
-    const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
     const data = authClient.signIn.social({
       provider: "google",
       callbackURL: "http://localhost:3000",
@@ -174,9 +174,9 @@ export function LoginForm({ ...props }: React.ComponentProps<typeof Card>) {
             e.preventDefault();
             form.handleSubmit();
           }}>
-          
+
           <FieldGroup>
-            
+
             <form.Field name="email" children={(field) => {
               const isInvalid =
                 field.state.meta.isTouched && !field.state.meta.isValid;
@@ -225,7 +225,7 @@ export function LoginForm({ ...props }: React.ComponentProps<typeof Card>) {
         <Button form="login-form" type="submit" className="w-full">Login</Button>
 
         <Button onClick={() => handleGoogleLogin()} variant="outline" type="button" className="w-full">
-        Continue with Google
+          Continue with Google
         </Button>
 
       </CardFooter>

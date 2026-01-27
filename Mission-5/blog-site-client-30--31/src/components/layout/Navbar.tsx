@@ -175,7 +175,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <ModeToggle/>
+            <ModeToggle />
             <Button asChild variant="outline" size="sm">
               {/* <a href={auth.login.url}>{auth.login.title}</a> */}
               <Link href={auth.login.url}>{auth.login.title}</Link>
@@ -267,7 +267,7 @@ const renderMenuItem = (item: MenuItem) => {
         asChild
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
-        
+
         <Link href={item.url}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>

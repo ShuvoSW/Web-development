@@ -1,5 +1,5 @@
 "use server"
-import {  BlogData,  blogService } from "@/services/blog.service"
+import { BlogData, blogService } from "@/services/blog.service"
 import { updateTag } from "next/cache";
 
 export const getBlogs = async () => {

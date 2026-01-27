@@ -52,7 +52,6 @@
 // }
 
 
-
 import BlogCard from "@/components/modules/homepage/BlogCard";
 import { blogService } from "@/services/blog.service";
 import { BlogPost } from "@/types";
@@ -72,7 +71,7 @@ export default async function Home() {
   //   postsPromise,
   // ]);
 
-  const [ featuredPosts, posts ] = await Promise.all([featuredPostsPromise, postsPromise])
+  const [featuredPosts, posts] = await Promise.all([featuredPostsPromise, postsPromise])
 
   // console.time("Sequential");
 

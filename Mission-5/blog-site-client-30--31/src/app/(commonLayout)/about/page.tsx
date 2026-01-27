@@ -9,13 +9,14 @@ export default function AboutPage() {
   // await new Promise((resolve) => setTimeout(resolve, 4000));
 
   const [data, setData] = useState()
-  const [error, setError] = useState<{message: string} | null>(null)
+  const [error, setError] = useState<{ message: string } | null>(null)
 
   console.log(data);
   console.log(error);
 
   useEffect(() => {
     (async () => {
+      
       // const { data } = await blogService.getBlogPosts()
       const { data, error } = await getBlogs()
 
@@ -26,6 +27,7 @@ export default function AboutPage() {
 
   //For this simulation error
   // throw new Error("Something went wrong");
+
   return (
     <div>
       <h1>This is about page component</h1>

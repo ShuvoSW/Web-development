@@ -36,7 +36,7 @@ const formSchema = z.object({
 
 export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
 
-    const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
     const data = authClient.signIn.social({
       provider: "google",
       callbackURL: "http://localhost:3000",
@@ -201,7 +201,7 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
         <Button form="login-form" type="submit" className="w-full">Register</Button>
 
         <Button onClick={() => handleGoogleLogin()} variant="outline" type="button" className="w-full">
-        Continue with Google
+          Continue with Google
         </Button>
 
       </CardFooter>

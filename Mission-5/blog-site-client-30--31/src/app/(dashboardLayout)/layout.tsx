@@ -1,4 +1,3 @@
-
 import { AppSidebar } from "@/components/layout/app-sidebar"
 import {
   Breadcrumb,
@@ -22,24 +21,24 @@ export default async function DashboardLayout({
   admin,
   user
 }: {
-    children: React.ReactNode;
-    admin: React.ReactNode;
-    user: React.ReactNode;
+  children: React.ReactNode;
+  admin: React.ReactNode;
+  user: React.ReactNode;
 }) {
 
   // const userInfo = {
   //   role: "admin"
   // }
 
-  const {data} = await userService.getSession();
-  
+  const { data } = await userService.getSession();
+
   // console.log("dashboard layout", data);
 
   const userInfo = data.user;
 
   return (
     <SidebarProvider>
-      <AppSidebar user={userInfo}/>
+      <AppSidebar user={userInfo} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
