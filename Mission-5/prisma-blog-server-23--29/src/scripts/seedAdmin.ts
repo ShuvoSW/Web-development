@@ -21,23 +21,23 @@ async function seedAdmin() {
         });
 
 
-        if(existingUser) {
+        if (existingUser) {
             throw new Error("User already exists!!");
         }
 
         const signUpAdmin = await fetch("http://localhost:3000/api/auth/sign-up/email", {
             method: "POST",
-        headers: {
-        "Content-type": "application/json"
-        },
-        body: JSON.stringify(adminData)
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(adminData)
         })
 
-      
+
         // console.log(signUpAdmin);
         // emailVerified = false
 
-        if(signUpAdmin.ok){  
+        if (signUpAdmin.ok) {
             console.log("***** Admin created");
             await prisma.user.update({
                 where: {
@@ -52,7 +52,7 @@ async function seedAdmin() {
         }
         console.log("******* SUCCESS ********");
 
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }

@@ -20,7 +20,7 @@ const createComment = async (req: Request, res: Response) => {
 const getCommentById = async (req: Request, res: Response) => {
 
     try {
-        const {commentId} = req.params
+        const { commentId } = req.params
         const result = await CommentService.getCommentById(commentId as string)
         res.status(200).json(result)
     } catch (e) {
@@ -34,7 +34,7 @@ const getCommentById = async (req: Request, res: Response) => {
 const getCommentByAuthor = async (req: Request, res: Response) => {
 
     try {
-        const {authorId} = req.params
+        const { authorId } = req.params
         const result = await CommentService.getCommentByAuthor(authorId as string)
         res.status(200).json(result)
     } catch (e) {
@@ -49,7 +49,7 @@ const deleteComment = async (req: Request, res: Response) => {
 
     try {
         const user = req.user;
-        const {commentId} = req.params;
+        const { commentId } = req.params;
         const result = await CommentService.deleteComment(commentId as string, user?.id as string)
         res.status(200).json(result)
     } catch (e) {
@@ -64,7 +64,7 @@ const updateComment = async (req: Request, res: Response) => {
 
     try {
         const user = req.user;
-        const {commentId} = req.params;
+        const { commentId } = req.params;
         const result = await CommentService.updateComment(commentId as string, req.body, user?.id as string)
         res.status(200).json(result)
     } catch (e) {
@@ -79,7 +79,7 @@ const updateComment = async (req: Request, res: Response) => {
 const moderateComment = async (req: Request, res: Response) => {
 
     try {
-        const {commentId} = req.params;
+        const { commentId } = req.params;
         const result = await CommentService.moderateComment(commentId as string, req.body)
         res.status(200).json(result)
     } catch (e) {

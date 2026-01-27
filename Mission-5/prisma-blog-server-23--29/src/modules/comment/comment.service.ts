@@ -10,12 +10,12 @@ const createComment = async (payload: {
     // console.log("Create comment service!", payload);
     await prisma.post.findUniqueOrThrow({
         where: {
-             id: payload.postId
+            id: payload.postId
         }
     })
 
 
-    if(payload.parentId){
+    if (payload.parentId) {
         await prisma.comment.findUniqueOrThrow({
             where: {
                 id: payload.parentId
@@ -46,28 +46,28 @@ const getCommentById = async (id: string) => {
 }
 
 const getCommentByAuthor = async (authorId: string) => {
-//   console.log({authorId});
-return await prisma.comment.findMany({
-    where: {
-        authorId
-    },
-    orderBy: {createdAt: "desc"},
-    include: {
-        post: {
-            select: {
-                id: true,
-                title: true
+    //   console.log({authorId});
+    return await prisma.comment.findMany({
+        where: {
+            authorId
+        },
+        orderBy: { createdAt: "desc" },
+        include: {
+            post: {
+                select: {
+                    id: true,
+                    title: true
+                }
             }
         }
-    }
-})
+    })
 }
 
 // 1. nijar comment delete korta parba
 // login takte hobe
 // tar nijar comment kina ata check korta hobe
 
-const deleteComment = async(commentId: string, authorId: string) => {
+const deleteComment = async (commentId: string, authorId: string) => {
     // console.log("delete comment");
     // console.log({commentId, authorId});
     const commentData = await prisma.comment.findFirst({
@@ -93,10 +93,10 @@ const deleteComment = async(commentId: string, authorId: string) => {
 }
 
 // authorId, commentId, updatedData
-const updateComment = async (commentId: string, data: {content?: string, status?: CommentStatus}, authorId: string) => {
+const updateComment = async (commentId: string, data: { content?: string, status?: CommentStatus }, authorId: string) => {
     // console.log({commentId, data, authorId});
 
-     const commentData = await prisma.comment.findFirst({
+    const commentData = await prisma.comment.findFirst({
         where: {
             id: commentId,
             authorId
@@ -120,7 +120,7 @@ const updateComment = async (commentId: string, data: {content?: string, status?
     })
 }
 
-const moderateComment = async (id: string, data: {status: CommentStatus}) => {
+const moderateComment = async (id: string, data: { status: CommentStatus }) => {
     // console.log("moderate comment", {id, data});
     const commentData = await prisma.comment.findUniqueOrThrow({
         where: {
@@ -132,7 +132,7 @@ const moderateComment = async (id: string, data: {status: CommentStatus}) => {
         }
     })
 
-    if(commentData.status === data.status) {
+    if (commentData.status === data.status) {
         throw new Error(`Your provided status (${data.status}) is already up to date.`)
     }
 

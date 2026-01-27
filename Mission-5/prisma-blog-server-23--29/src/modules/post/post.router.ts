@@ -29,7 +29,7 @@ router.get(
 router.post(
     "/",
     auth(UserRole.USER, UserRole.ADMIN),
-     postController.createPost
+    postController.createPost
 )
 
 router.patch(

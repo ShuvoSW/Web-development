@@ -23,7 +23,7 @@ const createPost = async (req: Request, res: Response, next: NextFunction) => {
         //     error: "Post creation failed 1",
         //     details: e
         // })
-        
+
         next(e)
     }
 }
@@ -80,7 +80,7 @@ const getPostById = async (req: Request, res: Response) => {
     try {
         const { postId } = req.params;
         // console.log({ postId });
-        if(!postId) {
+        if (!postId) {
             throw new Error("Post Id is required")
         }
         const result = await postService.getPostById(postId);
@@ -96,10 +96,10 @@ const getPostById = async (req: Request, res: Response) => {
 const getMyPosts = async (req: Request, res: Response) => {
     try {
         const user = req.user;
-        if(!user) {
+        if (!user) {
             throw new Error("You are unauthorized!")
         }
-        console.log("User data: " ,user);
+        console.log("User data: ", user);
         const result = await postService.getMyPosts(user.id);
         res.status(200).json(result)
     } catch (e) {
@@ -114,14 +114,14 @@ const getMyPosts = async (req: Request, res: Response) => {
 const updatePost = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user = req.user;
-        if(!user) {
+        if (!user) {
             throw new Error("You are unauthorized!")
         }
 
-        const {postId} = req.params;
+        const { postId } = req.params;
         const isAdmin = user.role === UserRole.ADMIN;
         // console.log(user);
-        const result = await postService.updatePost(postId as string,req.body, user.id, isAdmin);
+        const result = await postService.updatePost(postId as string, req.body, user.id, isAdmin);
         res.status(200).json(result)
     } catch (e) {
         //   const errorMessage = (e instanceof Error) ? e.message : "Post update failed"
@@ -137,17 +137,17 @@ const updatePost = async (req: Request, res: Response, next: NextFunction) => {
 const deletePost = async (req: Request, res: Response) => {
     try {
         const user = req.user;
-        if(!user) {
+        if (!user) {
             throw new Error("You are unauthorized!")
         }
 
-        const {postId} = req.params;
+        const { postId } = req.params;
         const isAdmin = user.role === UserRole.ADMIN;
         // console.log(user);
         const result = await postService.deletePost(postId as string, user.id, isAdmin);
         res.status(200).json(result)
     } catch (e) {
-          const errorMessage = (e instanceof Error) ? e.message : "Post delete failed"
+        const errorMessage = (e instanceof Error) ? e.message : "Post delete failed"
         res.status(400).json({
             error: errorMessage,
             details: e
@@ -157,11 +157,11 @@ const deletePost = async (req: Request, res: Response) => {
 
 const getStats = async (req: Request, res: Response) => {
     try {
-        
+
         const result = await postService.getStats();
         res.status(200).json(result)
     } catch (e) {
-          const errorMessage = (e instanceof Error) ? e.message : "Stats fetched failed"
+        const errorMessage = (e instanceof Error) ? e.message : "Stats fetched failed"
         res.status(400).json({
             error: errorMessage,
             details: e
