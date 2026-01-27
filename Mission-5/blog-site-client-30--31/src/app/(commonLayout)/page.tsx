@@ -99,19 +99,22 @@ export default async function Home() {
             className="w-full h-full object-cover rounded-lg"
           /> */}
 
-          <Image
+          {/* <Image
             src={coffee}
             fill
             alt="Hero"
             className="object-cover rounded-md"
-          />
-          {/* <Image
+          /> */}
+
+          {/* <Image src={coffee} fill alt="Hero" className="object-cover rounded-md"/> */}
+
+          <Image
             src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=100"
             fill
             priority
             alt="Hero"
             className="object-cover rounded-md"
-          /> */}
+          />
         </div>
         <h1 className={"text-5xl font-bold text-center mb-4"}>
           Welcome to Our Blog
